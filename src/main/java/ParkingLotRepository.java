@@ -7,7 +7,7 @@ public class ParkingLotRepository {
 
     public boolean getVehicleParked(Car carDetails) {
         if(parkedCars.size()<=100) {
-            parkedCars.put(carDetails.ownerName, carDetails);
+            parkedCars.put(carDetails.carNumber, carDetails);
             return true;
         }
         return false;
