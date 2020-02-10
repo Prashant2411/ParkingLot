@@ -12,11 +12,9 @@ public class ParkingLot {
         this.parkingLotRepository = parkingLotRepository;
     }
 
-    public boolean parkVehicle() {
-        return parkingLotRepository.getVehicleParked(carDetails);
-    }
-
-    public boolean unparkVehicle(String carNumber) {
-        return parkingLotRepository.getVehicleUnparked(carNumber);
+    public boolean getVehicleParkedUnparked(String... carNumber){
+        if (carNumber.length == 0)
+            return parkingLotRepository.getVehicleParked(carDetails);
+        return parkingLotRepository.getVehicleUnparked(carNumber[0]);
     }
 }

@@ -21,15 +21,15 @@ public class ParkingLotRepositoryTest {
     @Test
     public void whenVehicleArrives_shouldParkInLot() {
         ParkingLot parkingLot = new ParkingLot(carDetails);
-        boolean carParkStatus = parkingLot.parkVehicle();
+        boolean carParkStatus = parkingLot.getVehicleParkedUnparked();
         Assert.assertTrue(carParkStatus);
     }
 
     @Test
     public void whenDriverArrives_shouldUnparkVehicle() {
         ParkingLot parkingLot = new ParkingLot(carDetails);
-        boolean carParkStatus = parkingLot.parkVehicle();
-        boolean carUnParkStatus = parkingLot.unparkVehicle("ABC 1");
+        boolean carParkStatus = parkingLot.getVehicleParkedUnparked();
+        boolean carUnParkStatus = parkingLot.getVehicleParkedUnparked("ABC 1");
         Assert.assertTrue(carUnParkStatus);
     }
 
@@ -37,8 +37,8 @@ public class ParkingLotRepositoryTest {
     public void whenGivenInvalidCarNumber_shouldThrowException() {
         try {
             ParkingLot parkingLot = new ParkingLot(carDetails);
-            boolean carParkStatus = parkingLot.parkVehicle();
-            boolean carUnParkStatus = parkingLot.unparkVehicle("ABC 12");
+            boolean carParkStatus = parkingLot.getVehicleParkedUnparked();
+            boolean carUnParkStatus = parkingLot.getVehicleParkedUnparked("ABC 12");
         } catch (ParkingLotException e) {
             Assert.assertEquals(ParkingLotException.ExceptionType.NO_SUCH_CAR_NUMBER, e.type);
         }

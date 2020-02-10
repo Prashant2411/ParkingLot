@@ -34,16 +34,16 @@ public class ParkingLotTest {
     public void whenVehicleArrives_shouldParkInLot() {
         ParkingLot parkingLot = new ParkingLot(carDetails, parkingLotRepository);
         when(parkingLotRepository.getVehicleParked(carDetails)).thenReturn(true);
-        boolean carParkStatus = parkingLot.parkVehicle();
+        boolean carParkStatus = parkingLot.getVehicleParkedUnparked();
         Assert.assertTrue(carParkStatus);
     }
 
     @Test
     public void whenDriverArrives_shouldUnparkVehicle() {
         ParkingLot parkingLot = new ParkingLot(carDetails, parkingLotRepository);
-        boolean carParkStatus = parkingLot.parkVehicle();
+        boolean carParkStatus = parkingLot.getVehicleParkedUnparked();
         when(parkingLotRepository.getVehicleUnparked("ABC 1")).thenReturn(true);
-        boolean carUnParkStatus = parkingLot.unparkVehicle("ABC 1");
+        boolean carUnParkStatus = parkingLot.getVehicleParkedUnparked("ABC 1");
         Assert.assertTrue(carUnParkStatus);
 
     }
@@ -52,9 +52,9 @@ public class ParkingLotTest {
     public void whenGivenInvalidCarNumber_shouldThrowException() {
         try {
             ParkingLot parkingLot = new ParkingLot(carDetails);
-            boolean carParkStatus = parkingLot.parkVehicle();
+            boolean carParkStatus = parkingLot.getVehicleParkedUnparked();
             when(parkingLotRepository.getVehicleUnparked("ABC 12")).thenThrow(new ParkingLotException("Enter valid Car number", ParkingLotException.ExceptionType.NO_SUCH_CAR_NUMBER));
-            boolean carUnParkStatus = parkingLot.unparkVehicle("ABC 12");
+            boolean carUnParkStatus = parkingLot.getVehicleParkedUnparked("ABC 12");
         } catch (ParkingLotException e) {
             Assert.assertEquals(ParkingLotException.ExceptionType.NO_SUCH_CAR_NUMBER, e.type);
         }
