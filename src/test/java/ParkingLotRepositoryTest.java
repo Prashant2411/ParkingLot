@@ -54,6 +54,6 @@ public class ParkingLotRepositoryTest {
                 .getCarDetails();
         ParkingLot parkingLot = new ParkingLot(carDetails);
         boolean carParkStatus = parkingLot.getVehicleParkedUnparked();
-        Assert.assertEquals(ParkingLot.parkingLotStatus, "FULL");
+        Assert.assertEquals(ParkingLot.parkingLotStatus, ParkingLot.ParkingLotStatus.FULL);
     }
 }
