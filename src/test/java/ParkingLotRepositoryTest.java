@@ -56,4 +56,17 @@ public class ParkingLotRepositoryTest {
         boolean carParkStatus = parkingLot.getVehicleParkedUnparked();
         Assert.assertEquals(OwnerParkingLotStatus.FULL, ParkingLot.ownerParkingLotStatus);
     }
+
+    @Test
+    public void whenParkingLotStatusFull_shouldSetSecurityStaffStatusFull() {
+        carDetails[carDetails.length-1] = new Car()
+                .setCarNumber("ABC 101")
+                .setColor("Black")
+                .setModelName("CarModel 101")
+                .setOwnerName("ABC's 101")
+                .getCarDetails();
+        ParkingLot parkingLot = new ParkingLot(carDetails);
+        boolean carParkStatus = parkingLot.getVehicleParkedUnparked();
+        Assert.assertEquals(SecurityStatus.FULL, ParkingLot.securityStatus);
+    }
 }
