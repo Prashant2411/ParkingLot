@@ -2,11 +2,7 @@ public class ParkingLot {
 
     private Car[] carDetails;
     private ParkingLotRepository parkingLotRepository = new ParkingLotRepository();
-    public static ParkingLotStatus parkingLotStatus = ParkingLotStatus.NOT_FULL;
-
-    public enum ParkingLotStatus{
-        NOT_FULL, FULL
-    }
+    public static OwnerParkingLotStatus ownerParkingLotStatus = OwnerParkingLotStatus.NOT_FULL;
 
     public ParkingLot(Car[] carDetails) {
         this.carDetails = carDetails;

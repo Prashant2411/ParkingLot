@@ -10,11 +10,11 @@ import static org.mockito.Mockito.when;
 
 public class ParkingLotTest {
 
-    Car[] carDetails = new Car[5];
+    Car[] carDetails = new Car[101];
 
     @Before
     public void setup() {
-        for (int i = 0; i < 5; i++) {
+        for (int i = 0; i < 100; i++) {
             carDetails[i] = new Car()
                     .setCarNumber("ABC " + (i+1))
                     .setColor("Black")
@@ -51,7 +51,8 @@ public class ParkingLotTest {
     @Test
     public void whenGivenInvalidCarNumber_shouldThrowException() {
         try {
-            ParkingLot parkingLot = new ParkingLot(carDetails);
+            ParkingLot parkingLot = new ParkingLot(carDetails, parkingLotRepository
+            );
             boolean carParkStatus = parkingLot.getVehicleParkedUnparked();
             when(parkingLotRepository.getVehicleUnparked("ABC 12")).thenThrow(new ParkingLotException("Enter valid Car number", ParkingLotException.ExceptionType.NO_SUCH_CAR_NUMBER));
             boolean carUnParkStatus = parkingLot.getVehicleParkedUnparked("ABC 12");
