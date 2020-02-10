@@ -69,4 +69,32 @@ public class ParkingLotRepositoryTest {
         boolean carParkStatus = parkingLot.getVehicleParkedUnparked();
         Assert.assertEquals(ParkingLotStatus.FULL, ParkingLot.securityStatus);
     }
+
+    @Test
+    public void whenMoreThen100Vehicle_ifAnyVehicleUnparked_shouldSetParkingLotStatusNotFull() {
+        carDetails[carDetails.length-1] = new Car()
+                .setCarNumber("ABC 101")
+                .setColor("Black")
+                .setModelName("CarModel 101")
+                .setOwnerName("ABC's 101")
+                .getCarDetails();
+        ParkingLot parkingLot = new ParkingLot(carDetails);
+        boolean carParkStatus = parkingLot.getVehicleParkedUnparked();
+        carParkStatus = parkingLot.getVehicleParkedUnparked("ABC 10");
+        Assert.assertEquals(ParkingLotStatus.NOT_FULL, ParkingLot.ownerParkingLotStatus);
+    }
+
+    @Test
+    public void whenParkingLotStatusFull_shouldSetSecurityStaffStatusNotFull() {
+        carDetails[carDetails.length-1] = new Car()
+                .setCarNumber("ABC 101")
+                .setColor("Black")
+                .setModelName("CarModel 101")
+                .setOwnerName("ABC's 101")
+                .getCarDetails();
+        ParkingLot parkingLot = new ParkingLot(carDetails);
+        boolean carParkStatus = parkingLot.getVehicleParkedUnparked();
+        carParkStatus = parkingLot.getVehicleParkedUnparked("ABC 10");
+        Assert.assertEquals(ParkingLotStatus.NOT_FULL, ParkingLot.securityStatus);
+    }
 }

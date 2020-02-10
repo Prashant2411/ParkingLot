@@ -19,6 +19,8 @@ public class ParkingLotRepository {
     public boolean getVehicleUnparked(String carNumber) {
         if (parkedCars.containsKey(carNumber)) {
             parkedCars.remove(carNumber);
+            ParkingLot.ownerParkingLotStatus = ParkingLotStatus.NOT_FULL;
+            ParkingLot.securityStatus = ParkingLotStatus.NOT_FULL;
             return true;
         }
         throw new ParkingLotException("Enter valid Car number", ParkingLotException.ExceptionType.NO_SUCH_CAR_NUMBER);
