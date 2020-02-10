@@ -7,7 +7,10 @@ public class ParkingLotRepository {
 
     public boolean getVehicleParked(Car[] carDetails) {
         for (int i = 0; i < carDetails.length; i++)
-            parkedCars.put(carDetails[i].carNumber, carDetails[i]);
+            if (parkedCars.size() < 100)
+                parkedCars.put(carDetails[i].getCarNumber(), carDetails[i]);
+            else
+                ParkingLot.parkingLotStatus = "FULL";
         return true;
     }
 

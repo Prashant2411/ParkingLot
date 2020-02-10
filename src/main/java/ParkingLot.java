@@ -2,6 +2,7 @@ public class ParkingLot {
 
     private Car[] carDetails;
     private ParkingLotRepository parkingLotRepository = new ParkingLotRepository();
+    public static String parkingLotStatus = "HALF";
 
     public ParkingLot(Car[] carDetails) {
         this.carDetails = carDetails;
