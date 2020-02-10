@@ -10,7 +10,19 @@ import static org.mockito.Mockito.when;
 
 public class ParkingLotTest {
 
-    Car carDetails;
+    Car[] carDetails = new Car[5];
+
+    @Before
+    public void setup() {
+        for (int i = 0; i < 5; i++) {
+            carDetails[i] = new Car()
+                    .setCarNumber("ABC " + (i+1))
+                    .setColor("Black")
+                    .setModelName("CarModel " + i)
+                    .setOwnerName("ABC's "+ i)
+                    .getCarDetails();
+        }
+    }
 
     @Mock
     ParkingLotRepository parkingLotRepository;
@@ -18,21 +30,33 @@ public class ParkingLotTest {
     @Rule
     public MockitoRule mockitoRule = new MockitoJUnit().rule();
 
-    @Before
-    public void setup() {
-        carDetails = new Car()
-                .setCarNumber("ABC ")
-                .setColor("Black")
-                .setModelName("CarModel")
-                .setOwnerName("ABC's ")
-                .getCarDetails();
-    }
-
     @Test
     public void whenVehicleArrives_shouldParkInLot() {
         ParkingLot parkingLot = new ParkingLot(carDetails, parkingLotRepository);
         when(parkingLotRepository.getVehicleParked(carDetails)).thenReturn(true);
         boolean carParkStatus = parkingLot.parkVehicle();
         Assert.assertTrue(carParkStatus);
+    }
+
+    @Test
+    public void whenDriverArrives_shouldUnparkVehicle() {
+        ParkingLot parkingLot = new ParkingLot(carDetails, parkingLotRepository);
+        boolean carParkStatus = parkingLot.parkVehicle();
+        when(parkingLotRepository.getVehicleUnparked("ABC 1")).thenReturn(true);
+        boolean carUnParkStatus = parkingLot.unparkVehicle("ABC 1");
+        Assert.assertTrue(carUnParkStatus);
+
+    }
+
+    @Test
+    public void whenGivenInvalidCarNumber_shouldThrowException() {
+        try {
+            ParkingLot parkingLot = new ParkingLot(carDetails);
+            boolean carParkStatus = parkingLot.parkVehicle();
+            when(parkingLotRepository.getVehicleUnparked("ABC 12")).thenThrow(new ParkingLotException("Enter valid Car number", ParkingLotException.ExceptionType.NO_SUCH_CAR_NUMBER));
+            boolean carUnParkStatus = parkingLot.unparkVehicle("ABC 12");
+        } catch (ParkingLotException e) {
+            Assert.assertEquals(ParkingLotException.ExceptionType.NO_SUCH_CAR_NUMBER, e.type);
+        }
     }
 }
