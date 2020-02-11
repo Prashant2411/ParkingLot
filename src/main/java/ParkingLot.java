@@ -2,8 +2,8 @@ public class ParkingLot {
 
     private Car[] carDetails;
     private ParkingLotRepository parkingLotRepository = new ParkingLotRepository();
-    public static ParkingLotStatus ownerParkingLotStatus = ParkingLotStatus.NOT_FULL;
-    public static ParkingLotStatus securityStatus = ParkingLotStatus.NOT_FULL;
+    public static ParkingLotEnum ownerParkingLotStatus = ParkingLotEnum.NOT_FULL;
+    public static ParkingLotEnum securityStatus = ParkingLotEnum.NOT_FULL;
 
     public ParkingLot(Car[] carDetails) {
         this.carDetails = carDetails;

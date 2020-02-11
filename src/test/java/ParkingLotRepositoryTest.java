@@ -54,7 +54,7 @@ public class ParkingLotRepositoryTest {
                 .getCarDetails();
         ParkingLot parkingLot = new ParkingLot(carDetails);
         boolean carParkStatus = parkingLot.getVehicleParkedUnparked();
-        Assert.assertEquals(ParkingLotStatus.FULL, ParkingLot.ownerParkingLotStatus);
+        Assert.assertEquals(ParkingLotEnum.FULL, ParkingLot.ownerParkingLotStatus);
     }
 
     @Test
@@ -67,7 +67,7 @@ public class ParkingLotRepositoryTest {
                 .getCarDetails();
         ParkingLot parkingLot = new ParkingLot(carDetails);
         boolean carParkStatus = parkingLot.getVehicleParkedUnparked();
-        Assert.assertEquals(ParkingLotStatus.FULL, ParkingLot.securityStatus);
+        Assert.assertEquals(ParkingLotEnum.FULL, ParkingLot.securityStatus);
     }
 
     @Test
@@ -81,7 +81,7 @@ public class ParkingLotRepositoryTest {
         ParkingLot parkingLot = new ParkingLot(carDetails);
         boolean carParkStatus = parkingLot.getVehicleParkedUnparked();
         carParkStatus = parkingLot.getVehicleParkedUnparked("ABC 10");
-        Assert.assertEquals(ParkingLotStatus.NOT_FULL, ParkingLot.ownerParkingLotStatus);
+        Assert.assertEquals(ParkingLotEnum.NOT_FULL, ParkingLot.ownerParkingLotStatus);
     }
 
     @Test
@@ -95,6 +95,6 @@ public class ParkingLotRepositoryTest {
         ParkingLot parkingLot = new ParkingLot(carDetails);
         boolean carParkStatus = parkingLot.getVehicleParkedUnparked();
         carParkStatus = parkingLot.getVehicleParkedUnparked("ABC 10");
-        Assert.assertEquals(ParkingLotStatus.NOT_FULL, ParkingLot.securityStatus);
+        Assert.assertEquals(ParkingLotEnum.NOT_FULL, ParkingLot.securityStatus);
     }
 }

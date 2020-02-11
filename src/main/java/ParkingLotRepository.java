@@ -10,8 +10,8 @@ public class ParkingLotRepository {
             if (parkedCars.size() < 100)
                 parkedCars.put(carDetails[i].getCarNumber(), carDetails[i]);
             else {
-                ParkingLot.ownerParkingLotStatus = ParkingLotStatus.FULL;
-                ParkingLot.securityStatus = ParkingLotStatus.FULL;
+                ParkingLot.ownerParkingLotStatus = ParkingLotEnum.FULL;
+                ParkingLot.securityStatus = ParkingLotEnum.FULL;
             }
         return true;
     }
@@ -19,8 +19,8 @@ public class ParkingLotRepository {
     public boolean getVehicleUnparked(String carNumber) {
         if (parkedCars.containsKey(carNumber)) {
             parkedCars.remove(carNumber);
-            ParkingLot.ownerParkingLotStatus = ParkingLotStatus.NOT_FULL;
-            ParkingLot.securityStatus = ParkingLotStatus.NOT_FULL;
+            ParkingLot.ownerParkingLotStatus = ParkingLotEnum.NOT_FULL;
+            ParkingLot.securityStatus = ParkingLotEnum.NOT_FULL;
             return true;
         }
         throw new ParkingLotException("Enter valid Car number", ParkingLotException.ExceptionType.NO_SUCH_CAR_NUMBER);
