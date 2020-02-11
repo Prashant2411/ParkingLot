@@ -4,11 +4,11 @@ import org.junit.Test;
 
 public class ParkingLotRepositoryTest {
 
-    Car[] carDetails = new Car[101];
+    Car[] carDetails = new Car[100];
 
     @Before
     public void setup() {
-        for (int i = 0; i < 100; i++) {
+        for (int i = 0; i < carDetails.length; i++) {
             carDetails[i] = new Car()
                     .setCarNumber("ABC " + (i+1))
                     .setColor("Black")

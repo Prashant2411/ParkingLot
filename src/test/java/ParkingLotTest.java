@@ -14,7 +14,7 @@ public class ParkingLotTest {
 
     @Before
     public void setup() {
-        for (int i = 0; i < 100; i++) {
+        for (int i = 0; i < carDetails.length; i++) {
             carDetails[i] = new Car()
                     .setCarNumber("ABC " + (i+1))
                     .setColor("Black")
