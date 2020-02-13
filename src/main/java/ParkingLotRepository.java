@@ -1,9 +1,11 @@
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 public class ParkingLotRepository {
 
-    static Map<Integer, Object> parkedCars = new HashMap<>();
+    static List<Object> parkedCars = new ArrayList<>();
 
     static {
         try {
@@ -16,12 +18,12 @@ public class ParkingLotRepository {
     public boolean getVehicleParked(Object[] carDetails) {
         for (int i = 0; i < carDetails.length; i++)
             if (parkedCars.size() < 100)
-                parkedCars.put(i, carDetails[i]);
+                parkedCars.add(carDetails[i]);
         return true;
     }
 
     public boolean getVehicleUnparked(String carNumber) {
-        if (parkedCars.containsKey(carNumber)) {
+        if (parkedCars.contains(carNumber)) {
             parkedCars.remove(carNumber);
             return true;
         }
