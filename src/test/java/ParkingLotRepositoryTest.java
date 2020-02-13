@@ -41,12 +41,7 @@ public class ParkingLotRepositoryTest {
 
     @Test
     public void whenMoreThen100Vehicle_shouldSetParkingLotStatusFull() {
-        parkedVehicle[parkedVehicle.length-1] = new ParkedVehicle()
-                .setCarNumber("ABC 101")
-                .setColor("Black")
-                .setModelName("CarModel 101")
-                .setOwnerName("ABC's 101")
-                .getCarDetails();
+        parkedVehicle[parkedVehicle.length-1] = new Object();
         ParkingLot parkingLot = new ParkingLot(parkedVehicle);
         boolean carParkStatus = parkingLot.getVehicleParkedUnparked();
         Assert.assertEquals(ParkingLotEnum.FULL, ParkingLot.ownerParkingLotStatus);
@@ -54,12 +49,7 @@ public class ParkingLotRepositoryTest {
 
     @Test
     public void whenParkingLotStatusFull_shouldSetSecurityStaffStatusFull() {
-        parkedVehicle[parkedVehicle.length-1] = new ParkedVehicle()
-                .setCarNumber("ABC 101")
-                .setColor("Black")
-                .setModelName("CarModel 101")
-                .setOwnerName("ABC's 101")
-                .getCarDetails();
+        parkedVehicle[parkedVehicle.length-1] = new Object();
         ParkingLot parkingLot = new ParkingLot(parkedVehicle);
         boolean carParkStatus = parkingLot.getVehicleParkedUnparked();
         Assert.assertEquals(ParkingLotEnum.FULL, ParkingLot.securityStatus);
@@ -67,12 +57,7 @@ public class ParkingLotRepositoryTest {
 
     @Test
     public void whenMoreThen100Vehicle_ifAnyVehicleUnparked_shouldSetParkingLotStatusNotFull() {
-        parkedVehicle[parkedVehicle.length-1] = new ParkedVehicle()
-                .setCarNumber("ABC 101")
-                .setColor("Black")
-                .setModelName("CarModel 101")
-                .setOwnerName("ABC's 101")
-                .getCarDetails();
+        parkedVehicle[parkedVehicle.length-1] = new Object();
         ParkingLot parkingLot = new ParkingLot(parkedVehicle);
         boolean carParkStatus = parkingLot.getVehicleParkedUnparked();
         carParkStatus = parkingLot.getVehicleParkedUnparked("ABC 10");
@@ -81,12 +66,7 @@ public class ParkingLotRepositoryTest {
 
     @Test
     public void whenParkingLotStatusFull_shouldSetSecurityStaffStatusNotFull() {
-        parkedVehicle[parkedVehicle.length-1] = new ParkedVehicle()
-                .setCarNumber("ABC 101")
-                .setColor("Black")
-                .setModelName("CarModel 101")
-                .setOwnerName("ABC's 101")
-                .getCarDetails();
+        parkedVehicle[parkedVehicle.length-1] = new Object();
         ParkingLot parkingLot = new ParkingLot(parkedVehicle);
         boolean carParkStatus = parkingLot.getVehicleParkedUnparked();
         carParkStatus = parkingLot.getVehicleParkedUnparked("ABC 10");
