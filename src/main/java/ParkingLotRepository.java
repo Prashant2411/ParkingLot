@@ -3,7 +3,7 @@ import java.util.Map;
 
 public class ParkingLotRepository {
 
-    static Map<String, ParkedVehicle> parkedCars = new HashMap<>();
+    static Map<Integer, Object> parkedCars = new HashMap<>();
 
     static {
         try {
@@ -13,10 +13,10 @@ public class ParkingLotRepository {
         }
     }
 
-    public boolean getVehicleParked(ParkedVehicle[] carDetails) {
+    public boolean getVehicleParked(Object[] carDetails) {
         for (int i = 0; i < carDetails.length; i++)
             if (parkedCars.size() < 100)
-                parkedCars.put(carDetails[i].getCarNumber(), carDetails[i]);
+                parkedCars.put(i, carDetails[i]);
         return true;
     }
 
