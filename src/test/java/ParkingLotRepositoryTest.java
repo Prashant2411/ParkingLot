@@ -4,12 +4,12 @@ import org.junit.Test;
 
 public class ParkingLotRepositoryTest {
 
-    Car[] carDetails = new Car[100];
+    ParkedVehicle[] carDetails = new ParkedVehicle[100];
 
     @Before
     public void setup() {
         for (int i = 0; i < carDetails.length; i++) {
-            carDetails[i] = new Car()
+            carDetails[i] = new ParkedVehicle()
                     .setCarNumber("ABC " + (i+1))
                     .setColor("Black")
                     .setModelName("CarModel " + i)
@@ -46,7 +46,7 @@ public class ParkingLotRepositoryTest {
 
     @Test
     public void whenMoreThen100Vehicle_shouldSetParkingLotStatusFull() {
-        carDetails[carDetails.length-1] = new Car()
+        carDetails[carDetails.length-1] = new ParkedVehicle()
                 .setCarNumber("ABC 101")
                 .setColor("Black")
                 .setModelName("CarModel 101")
@@ -59,7 +59,7 @@ public class ParkingLotRepositoryTest {
 
     @Test
     public void whenParkingLotStatusFull_shouldSetSecurityStaffStatusFull() {
-        carDetails[carDetails.length-1] = new Car()
+        carDetails[carDetails.length-1] = new ParkedVehicle()
                 .setCarNumber("ABC 101")
                 .setColor("Black")
                 .setModelName("CarModel 101")
@@ -72,7 +72,7 @@ public class ParkingLotRepositoryTest {
 
     @Test
     public void whenMoreThen100Vehicle_ifAnyVehicleUnparked_shouldSetParkingLotStatusNotFull() {
-        carDetails[carDetails.length-1] = new Car()
+        carDetails[carDetails.length-1] = new ParkedVehicle()
                 .setCarNumber("ABC 101")
                 .setColor("Black")
                 .setModelName("CarModel 101")
@@ -86,7 +86,7 @@ public class ParkingLotRepositoryTest {
 
     @Test
     public void whenParkingLotStatusFull_shouldSetSecurityStaffStatusNotFull() {
-        carDetails[carDetails.length-1] = new Car()
+        carDetails[carDetails.length-1] = new ParkedVehicle()
                 .setCarNumber("ABC 101")
                 .setColor("Black")
                 .setModelName("CarModel 101")

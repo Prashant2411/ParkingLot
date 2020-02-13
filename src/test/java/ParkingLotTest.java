@@ -10,12 +10,12 @@ import static org.mockito.Mockito.when;
 
 public class ParkingLotTest {
 
-    Car[] carDetails = new Car[101];
+    ParkedVehicle[] carDetails = new ParkedVehicle[101];
 
     @Before
     public void setup() {
         for (int i = 0; i < carDetails.length; i++) {
-            carDetails[i] = new Car()
+            carDetails[i] = new ParkedVehicle()
                     .setCarNumber("ABC " + (i+1))
                     .setColor("Black")
                     .setModelName("CarModel " + i)

@@ -1,6 +1,6 @@
 import java.time.LocalDateTime;
 
-public class Car {
+public class ParkedVehicle {
     private String carNumber;
     private String ownerName;
     private String color;
@@ -8,7 +8,7 @@ public class Car {
     private LocalDateTime parkingTime;
     private int parkingLotNumber;
 
-    public Car(Integer parkingLotNumber, String carNumber, String ownerName, String color, String modelName, LocalDateTime parkingTime) {
+    public ParkedVehicle(Integer parkingLotNumber, String carNumber, String ownerName, String color, String modelName, LocalDateTime parkingTime) {
         this.carNumber = carNumber;
         this.ownerName = ownerName;
         this.color = color;
@@ -17,33 +17,33 @@ public class Car {
         this.parkingLotNumber = Integer.parseInt(String.valueOf(parkingLotNumber));
     }
 
-    public Car() {
+    public ParkedVehicle() {
         this.parkingTime = LocalDateTime.now();
         this.parkingLotNumber = (int) (Math.random()*100);
     }
 
-    public Car setCarNumber(String carNumber) {
+    public ParkedVehicle setCarNumber(String carNumber) {
         this.carNumber = carNumber;
         return this;
     }
 
-    public Car setOwnerName(String ownerName) {
+    public ParkedVehicle setOwnerName(String ownerName) {
         this.ownerName = ownerName;
         return this;
     }
 
-    public Car setColor(String color) {
+    public ParkedVehicle setColor(String color) {
         this.color = color;
         return this;
     }
 
-    public Car setModelName(String modelName) {
+    public ParkedVehicle setModelName(String modelName) {
         this.modelName = modelName;
         return this;
     }
 
-    public Car getCarDetails() {
-        return new Car(parkingLotNumber, carNumber, ownerName, color, modelName, parkingTime);
+    public ParkedVehicle getCarDetails() {
+        return new ParkedVehicle(parkingLotNumber, carNumber, ownerName, color, modelName, parkingTime);
     }
 
     public String getCarNumber() {
