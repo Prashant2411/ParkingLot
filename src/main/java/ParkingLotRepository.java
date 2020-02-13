@@ -22,11 +22,11 @@ public class ParkingLotRepository {
         return true;
     }
 
-    public boolean getVehicleUnparked(String carNumber) {
-        if (parkedCars.contains(carNumber)) {
-            parkedCars.remove(carNumber);
+    public boolean getVehicleUnparked(Object unparkVehicle) {
+        if (parkedCars.contains(unparkVehicle)) {
+            parkedCars.remove(unparkVehicle);
             return true;
         }
-        throw new ParkingLotException("Enter valid Car number", ParkingLotException.ExceptionType.NO_SUCH_CAR_NUMBER);
+        throw new ParkingLotException("Enter valid Car details", ParkingLotException.ExceptionType.NO_SUCH_CAR_NUMBER);
     }
 }

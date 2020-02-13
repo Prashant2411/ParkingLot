@@ -24,7 +24,7 @@ public class ParkingLotRepositoryTest {
     public void whenDriverArrives_shouldUnparkVehicle() {
         ParkingLot parkingLot = new ParkingLot(parkedVehicle);
         boolean carParkStatus = parkingLot.getVehicleParkedUnparked();
-        boolean carUnParkStatus = parkingLot.getVehicleParkedUnparked("ABC 1");
+        boolean carUnParkStatus = parkingLot.getVehicleParkedUnparked(parkedVehicle[0]);
         Assert.assertTrue(carUnParkStatus);
     }
 
@@ -33,7 +33,7 @@ public class ParkingLotRepositoryTest {
         try {
             ParkingLot parkingLot = new ParkingLot(parkedVehicle);
             boolean carParkStatus = parkingLot.getVehicleParkedUnparked();
-            boolean carUnParkStatus = parkingLot.getVehicleParkedUnparked("ABC 12");
+            boolean carUnParkStatus = parkingLot.getVehicleParkedUnparked(parkedVehicle[0]);
         } catch (ParkingLotException e) {
             Assert.assertEquals(ParkingLotException.ExceptionType.NO_SUCH_CAR_NUMBER, e.type);
         }
@@ -60,7 +60,7 @@ public class ParkingLotRepositoryTest {
         parkedVehicle[parkedVehicle.length-1] = new Object();
         ParkingLot parkingLot = new ParkingLot(parkedVehicle);
         boolean carParkStatus = parkingLot.getVehicleParkedUnparked();
-        carParkStatus = parkingLot.getVehicleParkedUnparked("ABC 10");
+        carParkStatus = parkingLot.getVehicleParkedUnparked(parkedVehicle[0]);
         Assert.assertEquals(ParkingLotEnum.NOT_FULL, ParkingLot.ownerParkingLotStatus);
     }
 
@@ -69,7 +69,7 @@ public class ParkingLotRepositoryTest {
         parkedVehicle[parkedVehicle.length-1] = new Object();
         ParkingLot parkingLot = new ParkingLot(parkedVehicle);
         boolean carParkStatus = parkingLot.getVehicleParkedUnparked();
-        carParkStatus = parkingLot.getVehicleParkedUnparked("ABC 10");
+        carParkStatus = parkingLot.getVehicleParkedUnparked(parkedVehicle[0]);
         Assert.assertEquals(ParkingLotEnum.NOT_FULL, ParkingLot.securityStatus);
     }
 }

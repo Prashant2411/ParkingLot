@@ -14,9 +14,9 @@ public class ParkingLot {
         this.parkingLotRepository = parkingLotRepository;
     }
 
-    public boolean getVehicleParkedUnparked(String... carNumber){
-        if (carNumber.length == 0)
+    public boolean getVehicleParkedUnparked(Object... unparkVehicle){
+        if (unparkVehicle.length == 0)
             return parkingLotRepository.getVehicleParked(parkedVehicle);
-        return parkingLotRepository.getVehicleUnparked(carNumber[0]);
+        return parkingLotRepository.getVehicleUnparked(unparkVehicle[0]);
     }
 }
