@@ -5,21 +5,36 @@ import java.util.Map;
 
 public class ParkingLotRepository {
 
-    public List parkedCars = new ArrayList<>();
+    public Map<Integer, Object> parkedCars = new HashMap<>();
 
     public boolean getVehicleParked(Object parkedCar) {
         if (this.parkedCars.size() < ParkingLot.totalSize) {
-            this.parkedCars.add(parkedCar);
+            this.parkedCars.put(getSlotNumber(), parkedCar);
         }
         return true;
     }
 
+    private Integer getSlotNumber() {
+        for (int i = 0 ; i < ParkingLot.totalSize ; i++)
+            if (parkedCars.containsKey(i) == false)
+                return i;
+        return null;
+    }
+
     public boolean getVehicleUnparked(Object unparkVehicle) {
-        if (parkedCars.contains(unparkVehicle)) {
-            parkedCars.remove(unparkVehicle);
+        Integer isCarParked = isCarParked(unparkVehicle);
+        if (isCarParked != null) {
+            parkedCars.remove(isCarParked);
             return true;
         }
         throw new ParkingLotException("Enter valid Car details", ParkingLotException.ExceptionType.NO_SUCH_CAR_NUMBER);
+    }
+
+    private Integer isCarParked(Object unparkVehicle) {
+        for (Map.Entry<Integer, Object> entry : parkedCars.entrySet())
+            if (unparkVehicle.equals(entry.getValue()))
+                return entry.getKey();
+        return null;
     }
 
 }

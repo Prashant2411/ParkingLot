@@ -1,4 +1,4 @@
-public class AirportSecuritySystem implements ParkingLotObserver{
+public class AirportSecuritySystem implements ParkingLotObserver {
 
     private static boolean isParkingLotFull;
 

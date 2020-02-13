@@ -1,4 +1,4 @@
-public class ParkingLotOwner implements ParkingLotObserver{
+public class ParkingLotOwner implements ParkingLotObserver {
 
     private static boolean isParkingLotFull;
 
