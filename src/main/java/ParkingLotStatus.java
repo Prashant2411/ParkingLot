@@ -10,13 +10,13 @@ public class ParkingLotStatus {
 
     public void run() {
             if (this.parkedCars.size() == ParkingLot.totalSize){
-                ParkingLot.ownerParkingLotStatus = ParkingLotEnum.FULL;
-                ParkingLot.securityStatus = ParkingLotEnum.FULL;
+                new ParkingLotOwner().setParkingLotFull(true);
+                new AirportSecuritySystem().setParkingLotFull(true);
             }
-            if (ParkingLot.ownerParkingLotStatus == ParkingLotEnum.FULL){
+            if (new AirportSecuritySystem().isParkingLotFull() == true){
                 if (this.parkedCars.size() < ParkingLot.totalSize){
-                    ParkingLot.ownerParkingLotStatus = ParkingLotEnum.NOT_FULL;
-                    ParkingLot.securityStatus = ParkingLotEnum.NOT_FULL;
+                    new ParkingLotOwner().setParkingLotFull(false);
+                    new AirportSecuritySystem().setParkingLotFull(false);
                 }
         }
     }

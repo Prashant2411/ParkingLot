@@ -2,8 +2,6 @@ public class ParkingLot {
 
     private ParkingLotRepository parkingLotRepository = new ParkingLotRepository();
     public static Integer totalSize;
-    public static ParkingLotEnum ownerParkingLotStatus = ParkingLotEnum.NOT_FULL;
-    public static ParkingLotEnum securityStatus = ParkingLotEnum.NOT_FULL;
 
     public ParkingLot(Integer totalSize) {
         this.totalSize = totalSize;

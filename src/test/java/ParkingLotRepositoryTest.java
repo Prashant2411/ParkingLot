@@ -39,11 +39,11 @@ public class ParkingLotRepositoryTest {
     }
 
     @Test
-    public void whenMoreThen100Vehicle_shouldSetParkingLotStatusFull() {
+    public void whenMoreVehicleThenAvailableLotSize_shouldSetParkingLotStatusFull() {
         Object parkedVehicle1 = new Object();
         boolean carParkStatus = parkingLot.getVehicleParked(parkedVehicle);
         boolean carParkStatus1 = parkingLot.getVehicleParked(parkedVehicle1);
-        Assert.assertEquals(ParkingLotEnum.FULL, ParkingLot.ownerParkingLotStatus);
+        Assert.assertTrue(new ParkingLotOwner().isParkingLotFull());
     }
 
     @Test
@@ -51,7 +51,7 @@ public class ParkingLotRepositoryTest {
         Object parkedVehicle1 = new Object();
         boolean carParkStatus = parkingLot.getVehicleParked(parkedVehicle);
         boolean carParkStatus1 = parkingLot.getVehicleParked(parkedVehicle1);
-        Assert.assertEquals(ParkingLotEnum.FULL, ParkingLot.securityStatus);
+        Assert.assertTrue(new AirportSecuritySystem().isParkingLotFull());
     }
 
     @Test
@@ -60,7 +60,7 @@ public class ParkingLotRepositoryTest {
         boolean carParkStatus = parkingLot.getVehicleParked(parkedVehicle);
         boolean carParkStatus1 = parkingLot.getVehicleParked(parkedVehicle1);
         boolean carUnparkStatus = parkingLot.getVehicleUnparked(parkedVehicle);
-        Assert.assertEquals(ParkingLotEnum.NOT_FULL, ParkingLot.ownerParkingLotStatus);
+        Assert.assertFalse(new ParkingLotOwner().isParkingLotFull());
     }
 
     @Test
@@ -69,6 +69,6 @@ public class ParkingLotRepositoryTest {
         boolean carParkStatus = parkingLot.getVehicleParked(parkedVehicle);
         boolean carParkStatus1 = parkingLot.getVehicleParked(parkedVehicle1);
         boolean carUnparkStatus = parkingLot.getVehicleUnparked(parkedVehicle);
-        Assert.assertEquals(ParkingLotEnum.NOT_FULL, ParkingLot.securityStatus);
+        Assert.assertFalse(new AirportSecuritySystem().isParkingLotFull());
     }
 }
