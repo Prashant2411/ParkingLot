@@ -5,20 +5,12 @@ import java.util.Map;
 
 public class ParkingLotRepository {
 
-    static List<Object> parkedCars = new ArrayList<>();
+    public List parkedCars = new ArrayList<>();
 
-    static {
-        try {
-            new ParkingLotStatus().parkingLotStatus();
-        } catch (InterruptedException e) {
-            e.printStackTrace();
+    public boolean getVehicleParked(Object parkedCar) {
+        if (this.parkedCars.size() < ParkingLot.totalSize) {
+            this.parkedCars.add(parkedCar);
         }
-    }
-
-    public boolean getVehicleParked(Object[] carDetails) {
-        for (int i = 0; i < carDetails.length; i++)
-            if (parkedCars.size() < 100)
-                parkedCars.add(carDetails[i]);
         return true;
     }
 
@@ -29,4 +21,5 @@ public class ParkingLotRepository {
         }
         throw new ParkingLotException("Enter valid Car details", ParkingLotException.ExceptionType.NO_SUCH_CAR_NUMBER);
     }
+
 }

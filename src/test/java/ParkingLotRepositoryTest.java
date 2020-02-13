@@ -4,36 +4,35 @@ import org.junit.Test;
 
 public class ParkingLotRepositoryTest {
 
-    Object[] parkedVehicle = new Object[1];
+    Object parkedVehicle = null;
+    ParkingLot parkingLot = null;
 
     @Before
     public void setup() {
-        for (int i = 0; i < parkedVehicle.length; i++) {
-            parkedVehicle[i] = new Object();
-        }
+        parkedVehicle = new Object();
+        parkingLot = new ParkingLot(2);
     }
 
     @Test
     public void whenVehicleArrives_shouldParkInLot() {
-        ParkingLot parkingLot = new ParkingLot(parkedVehicle);
-        boolean carParkStatus = parkingLot.getVehicleParkedUnparked();
+        boolean carParkStatus = parkingLot.getVehicleParked(parkedVehicle);
         Assert.assertTrue(carParkStatus);
     }
 
     @Test
     public void whenDriverArrives_shouldUnparkVehicle() {
-        ParkingLot parkingLot = new ParkingLot(parkedVehicle);
-        boolean carParkStatus = parkingLot.getVehicleParkedUnparked();
-        boolean carUnParkStatus = parkingLot.getVehicleParkedUnparked(parkedVehicle[0]);
+        Object parkedVehicle = new Object();
+        ParkingLot parkingLot = new ParkingLot(2);
+        boolean carParkStatus = parkingLot.getVehicleParked(parkedVehicle);
+        boolean carUnParkStatus = parkingLot.getVehicleUnparked(parkedVehicle);
         Assert.assertTrue(carUnParkStatus);
     }
 
     @Test
     public void whenGivenInvalidCarNumber_shouldThrowException() {
         try {
-            ParkingLot parkingLot = new ParkingLot(parkedVehicle);
-            boolean carParkStatus = parkingLot.getVehicleParkedUnparked();
-            boolean carUnParkStatus = parkingLot.getVehicleParkedUnparked(parkedVehicle[0]);
+            boolean carParkStatus = parkingLot.getVehicleParked(parkedVehicle);
+            boolean carUnParkStatus = parkingLot.getVehicleUnparked(parkedVehicle);
         } catch (ParkingLotException e) {
             Assert.assertEquals(ParkingLotException.ExceptionType.NO_SUCH_CAR_NUMBER, e.type);
         }
@@ -41,35 +40,35 @@ public class ParkingLotRepositoryTest {
 
     @Test
     public void whenMoreThen100Vehicle_shouldSetParkingLotStatusFull() {
-        parkedVehicle[parkedVehicle.length-1] = new Object();
-        ParkingLot parkingLot = new ParkingLot(parkedVehicle);
-        boolean carParkStatus = parkingLot.getVehicleParkedUnparked();
+        Object parkedVehicle1 = new Object();
+        boolean carParkStatus = parkingLot.getVehicleParked(parkedVehicle);
+        boolean carParkStatus1 = parkingLot.getVehicleParked(parkedVehicle1);
         Assert.assertEquals(ParkingLotEnum.FULL, ParkingLot.ownerParkingLotStatus);
     }
 
     @Test
     public void whenParkingLotStatusFull_shouldSetSecurityStaffStatusFull() {
-        parkedVehicle[parkedVehicle.length-1] = new Object();
-        ParkingLot parkingLot = new ParkingLot(parkedVehicle);
-        boolean carParkStatus = parkingLot.getVehicleParkedUnparked();
+        Object parkedVehicle1 = new Object();
+        boolean carParkStatus = parkingLot.getVehicleParked(parkedVehicle);
+        boolean carParkStatus1 = parkingLot.getVehicleParked(parkedVehicle1);
         Assert.assertEquals(ParkingLotEnum.FULL, ParkingLot.securityStatus);
     }
 
     @Test
     public void whenMoreThen100Vehicle_ifAnyVehicleUnparked_shouldSetParkingLotStatusNotFull() {
-        parkedVehicle[parkedVehicle.length-1] = new Object();
-        ParkingLot parkingLot = new ParkingLot(parkedVehicle);
-        boolean carParkStatus = parkingLot.getVehicleParkedUnparked();
-        carParkStatus = parkingLot.getVehicleParkedUnparked(parkedVehicle[0]);
+        Object parkedVehicle1 = new Object();
+        boolean carParkStatus = parkingLot.getVehicleParked(parkedVehicle);
+        boolean carParkStatus1 = parkingLot.getVehicleParked(parkedVehicle1);
+        boolean carUnparkStatus = parkingLot.getVehicleUnparked(parkedVehicle);
         Assert.assertEquals(ParkingLotEnum.NOT_FULL, ParkingLot.ownerParkingLotStatus);
     }
 
     @Test
-    public void whenParkingLotStatusFull_shouldSetSecurityStaffStatusNotFull() {
-        parkedVehicle[parkedVehicle.length-1] = new Object();
-        ParkingLot parkingLot = new ParkingLot(parkedVehicle);
-        boolean carParkStatus = parkingLot.getVehicleParkedUnparked();
-        carParkStatus = parkingLot.getVehicleParkedUnparked(parkedVehicle[0]);
+    public void whenParkingLotStatusFull_shouldSetSecurityStaffStatusNotFull() throws InterruptedException {
+        Object parkedVehicle1 = new Object();
+        boolean carParkStatus = parkingLot.getVehicleParked(parkedVehicle);
+        boolean carParkStatus1 = parkingLot.getVehicleParked(parkedVehicle1);
+        boolean carUnparkStatus = parkingLot.getVehicleUnparked(parkedVehicle);
         Assert.assertEquals(ParkingLotEnum.NOT_FULL, ParkingLot.securityStatus);
     }
 }

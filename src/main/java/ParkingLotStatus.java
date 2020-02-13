@@ -1,23 +1,27 @@
-public class ParkingLotStatus extends Thread{
+import java.util.List;
+
+public class ParkingLotStatus {
+
+    List parkedCars;
+
+    public ParkingLotStatus(List parkedCars) {
+        this.parkedCars = parkedCars;
+    }
+
     public void run() {
-        while (true){
-            if (ParkingLotRepository.parkedCars.size() == 100){
+            if (this.parkedCars.size() == ParkingLot.totalSize){
                 ParkingLot.ownerParkingLotStatus = ParkingLotEnum.FULL;
                 ParkingLot.securityStatus = ParkingLotEnum.FULL;
             }
             if (ParkingLot.ownerParkingLotStatus == ParkingLotEnum.FULL){
-                if (ParkingLotRepository.parkedCars.size() < 100){
+                if (this.parkedCars.size() < ParkingLot.totalSize){
                     ParkingLot.ownerParkingLotStatus = ParkingLotEnum.NOT_FULL;
                     ParkingLot.securityStatus = ParkingLotEnum.NOT_FULL;
                 }
-            }
         }
     }
 
-    public void parkingLotStatus() throws InterruptedException {
-        Thread parkingLot = new ParkingLotStatus();
-        parkingLot.setDaemon(true);
-        parkingLot.start();
-        Thread.sleep(2000);
+    public void parkingLotStatus() {
+        this.run();
     }
 }
