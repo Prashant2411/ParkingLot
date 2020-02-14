@@ -1,4 +1,3 @@
-import java.util.List;
 import java.util.Map;
 
 public class ParkingLotStatus {
@@ -9,7 +8,7 @@ public class ParkingLotStatus {
         this.parkedCars = parkedCars;
     }
 
-    public void run() {
+    public void parkingLotStatus() {
         if (this.parkedCars.size() == ParkingLot.totalSize) {
             new ParkingLotOwner().setParkingLotFull(true);
             new AirportSecuritySystem().setParkingLotFull(true);
@@ -20,9 +19,5 @@ public class ParkingLotStatus {
                 new AirportSecuritySystem().setParkingLotFull(false);
             }
         }
-    }
-
-    public void parkingLotStatus() {
-        this.run();
     }
 }

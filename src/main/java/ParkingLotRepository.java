@@ -1,6 +1,4 @@
-import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 public class ParkingLotRepository {
@@ -30,11 +28,10 @@ public class ParkingLotRepository {
         throw new ParkingLotException("Enter valid Car details", ParkingLotException.ExceptionType.NO_SUCH_CAR_NUMBER);
     }
 
-    public   Integer isCarParked(Object unparkVehicle) {
+    public Integer isCarParked(Object unparkVehicle) {
         for (Map.Entry<Integer, Object> entry : parkedCars.entrySet())
             if (unparkVehicle.equals(entry.getValue()))
                 return entry.getKey();
         return null;
     }
-
 }
