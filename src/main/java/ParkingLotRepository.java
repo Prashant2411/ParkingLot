@@ -3,9 +3,9 @@ import java.util.Map;
 
 public class ParkingLotRepository {
 
-    public Map<Integer, Object> parkedCars = new HashMap<>();
+    public Map<Integer, ParkingVehicle> parkedCars = new HashMap<>();
 
-    public boolean getVehicleParked(Object parkedCar) {
+    public boolean getVehicleParked(ParkingVehicle parkedCar) {
         if (this.parkedCars.size() < ParkingLot.totalSize) {
             this.parkedCars.put(getSlotNumber(), parkedCar);
         }
@@ -19,7 +19,7 @@ public class ParkingLotRepository {
         return null;
     }
 
-    public boolean getVehicleUnparked(Object unparkVehicle) {
+    public boolean getVehicleUnparked(ParkingVehicle unparkVehicle) {
         Integer isCarParked = isCarParked(unparkVehicle);
         if (isCarParked != null) {
             parkedCars.remove(isCarParked);
@@ -28,10 +28,19 @@ public class ParkingLotRepository {
         throw new ParkingLotException("Enter valid Car details", ParkingLotException.ExceptionType.NO_SUCH_CAR_NUMBER);
     }
 
-    public Integer isCarParked(Object unparkVehicle) {
-        for (Map.Entry<Integer, Object> entry : parkedCars.entrySet())
+    public Integer isCarParked(ParkingVehicle unparkVehicle) {
+        for (Map.Entry<Integer, ParkingVehicle> entry : parkedCars.entrySet())
             if (unparkVehicle.equals(entry.getValue()))
                 return entry.getKey();
         return null;
+    }
+
+    public String getParkingTime(ParkingVehicle parkedVehicle) {
+        Integer carSlotNumber = isCarParked(parkedVehicle);
+        if(carSlotNumber != null) {
+            return parkedCars.get(carSlotNumber)
+                    .getLocalDateTime();
+        }
+        throw new ParkingLotException("Enter valid Car details", ParkingLotException.ExceptionType.NO_SUCH_CAR_NUMBER);
     }
 }

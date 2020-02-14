@@ -1,6 +1,6 @@
 public class ParkingLotException extends RuntimeException {
 
-    public enum ExceptionType {
+    public enum ExceptionType{
         NO_SUCH_CAR_NUMBER
     }
 

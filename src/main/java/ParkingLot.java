@@ -12,19 +12,25 @@ public class ParkingLot {
         this.parkingLotRepository = parkingLotRepository;
     }
 
-    public boolean getVehicleParked(Object parkedVehicle) {
+    public boolean getVehicleParked(ParkingVehicle parkedVehicle) {
         boolean parkingStatus = parkingLotRepository.getVehicleParked(parkedVehicle);
         parkingLotStatus.parkingLotStatus();
         return parkingStatus;
     }
 
-    public boolean getVehicleUnparked(Object unparkVehicle) {
+    public boolean getVehicleUnparked(ParkingVehicle unparkVehicle) {
         boolean unparkingStatus = parkingLotRepository.getVehicleUnparked(unparkVehicle);
         parkingLotStatus.parkingLotStatus();
         return unparkingStatus;
     }
 
-    public Integer findVehicle(Object parkedVehicle) {
+    public Integer findVehicle(ParkingVehicle parkedVehicle) {
         return parkingLotRepository.isCarParked(parkedVehicle);
+    }
+
+    public String getParkedTime(ParkingVehicle unparkedVehicle) {
+        String parkingTime = parkingLotRepository.getParkingTime(unparkedVehicle);
+        new ParkingLotOwner().setVehicleParkingTime(parkingTime);
+        return parkingTime;
     }
 }
