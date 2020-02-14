@@ -23,4 +23,8 @@ public class ParkingLot {
         parkingLotStatus.parkingLotStatus();
         return unparkingStatus;
     }
+
+    public Integer findVehicle(Object parkedVehicle) {
+        return parkingLotRepository.isCarParked(parkedVehicle);
+    }
 }

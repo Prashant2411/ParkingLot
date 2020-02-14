@@ -15,7 +15,7 @@ public class ParkingLotRepository {
     }
 
     private Integer getSlotNumber() {
-        for (int i = 0 ; i < ParkingLot.totalSize ; i++)
+        for (int i = 1 ; i <= ParkingLot.totalSize ; i++)
             if (parkedCars.containsKey(i) == false)
                 return i;
         return null;
@@ -30,7 +30,7 @@ public class ParkingLotRepository {
         throw new ParkingLotException("Enter valid Car details", ParkingLotException.ExceptionType.NO_SUCH_CAR_NUMBER);
     }
 
-    private Integer isCarParked(Object unparkVehicle) {
+    public   Integer isCarParked(Object unparkVehicle) {
         for (Map.Entry<Integer, Object> entry : parkedCars.entrySet())
             if (unparkVehicle.equals(entry.getValue()))
                 return entry.getKey();

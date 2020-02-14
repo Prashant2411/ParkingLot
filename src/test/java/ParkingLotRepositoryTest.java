@@ -71,4 +71,11 @@ public class ParkingLotRepositoryTest {
         boolean carUnparkStatus = parkingLot.getVehicleUnparked(parkedVehicle);
         Assert.assertFalse(new AirportSecuritySystem().isParkingLotFull());
     }
+
+    @Test
+    public void whenGivenParkingVehicle_shouldReturnSlotNumber() {
+        boolean carParkStatus = parkingLot.getVehicleParked(parkedVehicle);
+        Integer slotNumber = parkingLot.findVehicle(parkedVehicle);
+        Assert.assertEquals("1",""+slotNumber);
+    }
 }
