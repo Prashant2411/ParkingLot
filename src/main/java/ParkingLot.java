@@ -1,11 +1,14 @@
 public class ParkingLot {
 
-    private ParkingLotRepository parkingLotRepository = new ParkingLotRepository();
-    private ParkingLotStatus parkingLotStatus = new ParkingLotStatus(parkingLotRepository.parkedCars);
-    public static Integer totalSize;
+    private ParkingLotRepository parkingLotRepository;
+    private ParkingLotStatus parkingLotStatus;
+    public static Integer totalSize, noOfLots;
 
-    public ParkingLot(Integer totalSize) {
+    public ParkingLot(Integer totalSize, Integer noOfLots) {
         this.totalSize = totalSize;
+        this.noOfLots = noOfLots;
+        parkingLotRepository = new ParkingLotRepository(totalSize, noOfLots);
+        parkingLotStatus = new ParkingLotStatus(parkingLotRepository.parkedCars);
     }
 
     public ParkingLot(ParkingLotRepository parkingLotRepository) {

@@ -4,20 +4,25 @@ import java.util.Map;
 public class ParkingLotRepository {
 
     public Map<Integer, ParkingVehicle> parkedCars = new HashMap<>();
-    private static Integer noOfLots=4, lotStartPoint=0;
+    private static Integer noOfLots, lotStartPoint=0, totalSize;
+
+    public ParkingLotRepository(Integer totalSize, Integer noOfLots) {
+        this.noOfLots = noOfLots;
+        this.totalSize = totalSize;
+    }
 
     public boolean getVehicleParked(ParkingVehicle parkedCar) {
-        if (this.parkedCars.size() < ParkingLot.totalSize) {
+        if (this.parkedCars.size() < this.totalSize) {
             this.parkedCars.put(getSlotNumber(), parkedCar);
         }
-        lotStartPoint += ParkingLot.totalSize/noOfLots;
+        lotStartPoint += this.totalSize/noOfLots;
         return true;
     }
 
     private Integer getSlotNumber() {
-        for (int i = 1 ; i <= ParkingLot.totalSize/noOfLots ; i++)
-            if (parkedCars.containsKey((i+lotStartPoint)%ParkingLot.totalSize) == false){
-                return (i+lotStartPoint)%ParkingLot.totalSize;}
+        for (int i = 1 ; i <= this.totalSize/noOfLots ; i++)
+            if (parkedCars.containsKey((i+lotStartPoint)%this.totalSize) == false){
+                return (i+lotStartPoint)%this.totalSize;}
         return null;
     }
 
