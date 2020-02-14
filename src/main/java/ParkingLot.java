@@ -19,6 +19,7 @@ public class ParkingLot {
     }
 
     public boolean getVehicleUnparked(ParkingVehicle unparkVehicle) {
+        this.getParkedTime(unparkVehicle);
         boolean unparkingStatus = parkingLotRepository.getVehicleUnparked(unparkVehicle);
         parkingLotStatus.parkingLotStatus();
         return unparkingStatus;
@@ -28,7 +29,7 @@ public class ParkingLot {
         return parkingLotRepository.isCarParked(parkedVehicle);
     }
 
-    public void getParkedTime(ParkingVehicle unparkedVehicle) {
+    private void getParkedTime(ParkingVehicle unparkedVehicle) {
         String parkingTime = parkingLotRepository.getParkingTime(unparkedVehicle);
         new ParkingLotOwner().setVehicleParkingTime(parkingTime);
     }

@@ -82,7 +82,7 @@ public class ParkingLotRepositoryTest {
     @Test
     public void whenGivenParkingVehicle_shouldReturnTimeParked() {
         boolean carParkStatus = parkingLot.getVehicleParked(parkedVehicle);
-        parkingLot.getParkedTime(parkedVehicle);
+        boolean carUnparkStatus = parkingLot.getVehicleUnparked(parkedVehicle);
         Assert.assertEquals(parkedVehicle.getLocalDateTime(), new ParkingLotOwner().getVehicleParkingTime());
     }
 }
