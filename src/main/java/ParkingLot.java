@@ -28,9 +28,8 @@ public class ParkingLot {
         return parkingLotRepository.isCarParked(parkedVehicle);
     }
 
-    public String getParkedTime(ParkingVehicle unparkedVehicle) {
+    public void getParkedTime(ParkingVehicle unparkedVehicle) {
         String parkingTime = parkingLotRepository.getParkingTime(unparkedVehicle);
         new ParkingLotOwner().setVehicleParkingTime(parkingTime);
-        return parkingTime;
     }
 }
