@@ -1,6 +1,7 @@
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
+import sun.text.resources.cldr.ext.FormatData_yo_BJ;
 
 public class ParkingLotRepositoryTest {
 
@@ -10,12 +11,13 @@ public class ParkingLotRepositoryTest {
     @Before
     public void setup() {
         parkedVehicle = new ParkingVehicle();
-        parkingLot = new ParkingLot(2);
+        parkingLot = new ParkingLot(8);
     }
 
     @Test
     public void whenVehicleArrives_shouldParkInLot() {
         boolean carParkStatus = parkingLot.getVehicleParked(parkedVehicle);
+        ParkingVehicle parkedVehicle1 = new ParkingVehicle();
         Assert.assertTrue(carParkStatus);
     }
 
@@ -84,5 +86,19 @@ public class ParkingLotRepositoryTest {
         boolean carParkStatus = parkingLot.getVehicleParked(parkedVehicle);
         boolean carUnparkStatus = parkingLot.getVehicleUnparked(parkedVehicle);
         Assert.assertEquals(parkedVehicle.getLocalDateTime(), new ParkingLotOwner().getVehicleParkingTime());
+    }
+
+    @Test
+    public void whenVehicleArrives_shouldParkInLotEvenly() {
+        boolean carParkStatus = parkingLot.getVehicleParked(parkedVehicle);
+        ParkingVehicle parkedVehicle1 = new ParkingVehicle();
+        boolean carParkStatus1 = parkingLot.getVehicleParked(parkedVehicle1);
+        ParkingVehicle parkedVehicle2 = new ParkingVehicle();
+        boolean carParkStatus2 = parkingLot.getVehicleParked(parkedVehicle2);
+        ParkingVehicle parkedVehicle3 = new ParkingVehicle();
+        boolean carParkStatus3 = parkingLot.getVehicleParked(parkedVehicle3);
+        ParkingVehicle parkedVehicle4 = new ParkingVehicle();
+        boolean carParkStatus4 = parkingLot.getVehicleParked(parkedVehicle4);
+        Assert.assertTrue(carParkStatus && carParkStatus1 && carParkStatus2 && carParkStatus3 && carParkStatus4);
     }
 }
