@@ -11,10 +11,6 @@ public class ParkingLot {
         parkingLotStatus = new ParkingLotStatus(parkingLotRepository.parkedCars);
     }
 
-    public ParkingLot(ParkingLotRepository parkingLotRepository) {
-        this.parkingLotRepository = parkingLotRepository;
-    }
-
     public boolean getVehicleParked(ParkingVehicle parkedVehicle) {
         boolean parkingStatus = parkingLotRepository.getVehicleParked(parkedVehicle);
         parkingLotStatus.parkingLotStatus();

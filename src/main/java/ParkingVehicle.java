@@ -14,12 +14,4 @@ public class ParkingVehicle {
     public String getLocalDateTime() {
         return this.localDateTime;
     }
-
-    @Override
-    public String toString() {
-        return "ParkingVehicle{" +
-                "localDateTime='" + localDateTime + '\'' +
-                ", isHandicap=" + isHandicap +
-                '}';
-    }
 }
