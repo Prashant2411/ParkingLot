@@ -59,7 +59,7 @@ public class ParkingLotRepositoryTest {
         boolean carParkStatus3 = parkingLot.getVehicleParked(parkedVehicle3);
         ParkingVehicle parkedVehicle4 = new ParkingVehicle();
         boolean carParkStatus4 = parkingLot.getVehicleParked(parkedVehicle4);
-        Assert.assertTrue(new ParkingLotOwner().isParkingLotFull());
+        Assert.assertTrue(new ParkingLotOwner().isParkingLotFull);
     }
 
     @Test
@@ -73,7 +73,7 @@ public class ParkingLotRepositoryTest {
         boolean carParkStatus3 = parkingLot.getVehicleParked(parkedVehicle3);
         ParkingVehicle parkedVehicle4 = new ParkingVehicle();
         boolean carParkStatus4 = parkingLot.getVehicleParked(parkedVehicle4);
-        Assert.assertTrue(new AirportSecuritySystem().isParkingLotFull());
+        Assert.assertTrue(new AirportSecuritySystem().isParkingLotFull);
     }
 
     @Test
@@ -82,7 +82,7 @@ public class ParkingLotRepositoryTest {
         boolean carParkStatus = parkingLot.getVehicleParked(parkedVehicle);
         boolean carParkStatus1 = parkingLot.getVehicleParked(parkedVehicle1);
         boolean carUnparkStatus = parkingLot.getVehicleUnparked(parkedVehicle);
-        Assert.assertFalse(new ParkingLotOwner().isParkingLotFull());
+        Assert.assertFalse(new ParkingLotOwner().isParkingLotFull);
     }
 
     @Test
@@ -91,7 +91,7 @@ public class ParkingLotRepositoryTest {
         boolean carParkStatus = parkingLot.getVehicleParked(parkedVehicle);
         boolean carParkStatus1 = parkingLot.getVehicleParked(parkedVehicle1);
         boolean carUnparkStatus = parkingLot.getVehicleUnparked(parkedVehicle);
-        Assert.assertFalse(new AirportSecuritySystem().isParkingLotFull());
+        Assert.assertFalse(new AirportSecuritySystem().isParkingLotFull);
     }
 
     @Test

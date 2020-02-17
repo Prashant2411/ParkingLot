@@ -1,14 +1,9 @@
-public class AirportSecuritySystem implements ParkingLotObserver {
+public class AirportSecuritySystem implements ParkingLotObservers {
 
-    private static boolean isParkingLotFull;
-
-    @Override
-    public boolean isParkingLotFull() {
-        return this.isParkingLotFull;
-    }
+    public static boolean isParkingLotFull;
 
     @Override
-    public void setParkingLotFull(boolean isParkingLotFull) {
-        this.isParkingLotFull = isParkingLotFull;
+    public void setParkingLotStatus(boolean parkingLotStatus) {
+        this.isParkingLotFull=parkingLotStatus;
     }
 }

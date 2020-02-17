@@ -1,17 +1,7 @@
-public class ParkingLotOwner implements ParkingLotObserver {
+public class ParkingLotOwner implements ParkingLotObservers {
 
-    private static boolean isParkingLotFull;
-    private static String vehicleParkingTime;
-
-    @Override
-    public boolean isParkingLotFull() {
-        return this.isParkingLotFull;
-    }
-
-    @Override
-    public void setParkingLotFull(boolean isParkingLotFull) {
-        this.isParkingLotFull = isParkingLotFull;
-    }
+    public static boolean isParkingLotFull;
+    public static String vehicleParkingTime;
 
     public String getVehicleParkingTime() {
         return vehicleParkingTime;
@@ -19,5 +9,10 @@ public class ParkingLotOwner implements ParkingLotObserver {
 
     public void setVehicleParkingTime(String vehicleParkingTime) {
         this.vehicleParkingTime = vehicleParkingTime;
+    }
+
+    @Override
+    public void setParkingLotStatus(boolean parkingLotStatus) {
+        this.isParkingLotFull=parkingLotStatus;
     }
 }

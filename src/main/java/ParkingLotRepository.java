@@ -15,16 +15,16 @@ public class ParkingLotRepository {
     public boolean getVehicleParked(ParkingVehicle parkedCar) {
         if (this.parkedCars.size() < this.totalSize && this.parkedCars.containsValue(parkedCar) == false) {
             this.parkedCars.put(getSlotNumber(parkedCar.isHandicap), parkedCar);
-            return true;
-        }
-        throw new ParkingLotException("Vehicle Already Parked", ParkingLotException.ExceptionType.VEHICLE_ALREADY_PARKED);
+        } else if (this.parkedCars.containsValue(parkedCar) == true)
+            throw new ParkingLotException("Vehicle Already Parked", ParkingLotException.ExceptionType.VEHICLE_ALREADY_PARKED);
+        return true;
     }
 
     private Integer getSlotNumber(boolean isHandicap) {
         int n = 0;
         if (isHandicap == true) {
             return getHandicapSlotNumber();
-        } else if(isHandicap == false) {
+        } else if (isHandicap == false) {
             if (count == noOfLots) {
                 count = 0;
                 i++;
@@ -43,11 +43,12 @@ public class ParkingLotRepository {
 
     private Integer getHandicapSlotNumber() {
         int n = 0;
-        for (int i = 1; i <= totalSize; i++){
+        for (int i = 1; i <= totalSize; i++) {
             if (parkedCars.containsKey(i) == false) {
                 n = i;
                 break;
-            }}
+            }
+        }
         count++;
         return n;
     }
