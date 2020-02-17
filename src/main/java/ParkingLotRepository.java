@@ -4,7 +4,8 @@ import java.util.Map;
 public class ParkingLotRepository {
 
     public Map<Integer, ParkingVehicle> parkedCars = new HashMap<>();
-    private static Integer noOfLots, lotStartPoint=0, totalSize;
+    private Integer noOfLots, lotStartPoint = 0, totalSize;
+    private int count = 0, i = 1;
 
     public ParkingLotRepository(Integer totalSize, Integer noOfLots) {
         this.noOfLots = noOfLots;
@@ -13,17 +14,42 @@ public class ParkingLotRepository {
 
     public boolean getVehicleParked(ParkingVehicle parkedCar) {
         if (this.parkedCars.size() < this.totalSize) {
-            this.parkedCars.put(getSlotNumber(), parkedCar);
+            this.parkedCars.put(getSlotNumber(parkedCar.isHandicap), parkedCar);
         }
-        lotStartPoint += this.totalSize/noOfLots;
+        System.out.println(parkedCars);
         return true;
     }
 
-    private Integer getSlotNumber() {
-        for (int i = 1 ; i <= this.totalSize/noOfLots ; i++)
-            if (parkedCars.containsKey((i+lotStartPoint)%this.totalSize) == false){
-                return (i+lotStartPoint)%this.totalSize;}
-        return null;
+    private Integer getSlotNumber(boolean isHandicap) {
+        int n = 0;
+        if (isHandicap == true) {
+            return getHandicapSlotNumber();
+        } else if(isHandicap == false) {
+            if (count == noOfLots) {
+                count = 0;
+                i++;
+            }
+            if (parkedCars.containsKey((i + lotStartPoint) % this.totalSize) == false)
+                n = i + lotStartPoint % this.totalSize;
+            else {
+                lotStartPoint += this.totalSize / noOfLots;
+                n = getSlotNumber(isHandicap);
+            }
+        }
+        lotStartPoint += this.totalSize / noOfLots;
+        count++;
+        return n;
+    }
+
+    private Integer getHandicapSlotNumber() {
+        int n = 0;
+        for (int i = 1; i <= totalSize; i++){
+            if (parkedCars.containsKey(i) == false) {
+                n = i;
+                break;
+            }}
+        count++;
+        return n;
     }
 
     public boolean getVehicleUnparked(ParkingVehicle unparkVehicle) {
@@ -44,7 +70,7 @@ public class ParkingLotRepository {
 
     public String getParkingTime(ParkingVehicle parkedVehicle) {
         Integer carSlotNumber = isCarParked(parkedVehicle);
-        if(carSlotNumber != null) {
+        if (carSlotNumber != null) {
             return parkedCars.get(carSlotNumber)
                     .getLocalDateTime();
         }

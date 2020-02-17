@@ -1,11 +1,9 @@
-import jdk.vm.ci.meta.Local;
-
 import java.time.LocalDateTime;
-import java.time.ZonedDateTime;
 import java.time.format.DateTimeFormatter;
 
 public class ParkingVehicle {
     private String localDateTime;
+    public boolean isHandicap = false;
 
     public ParkingVehicle() {
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
@@ -15,5 +13,13 @@ public class ParkingVehicle {
 
     public String getLocalDateTime() {
         return this.localDateTime;
+    }
+
+    @Override
+    public String toString() {
+        return "ParkingVehicle{" +
+                "localDateTime='" + localDateTime + '\'' +
+                ", isHandicap=" + isHandicap +
+                '}';
     }
 }

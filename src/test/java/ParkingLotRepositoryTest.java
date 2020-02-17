@@ -88,10 +88,10 @@ public class ParkingLotRepositoryTest {
     @Test
     public void whenGivenParkingVehicle_shouldReturnSlotNumber() {
         boolean carParkStatus = parkingLot.getVehicleParked(parkedVehicle);
-        ParkingVehicle parkedVehicle1 = new ParkingVehicle();
-        boolean carParkStatus1 = parkingLot.getVehicleParked(parkedVehicle1);
-        ParkingVehicle parkedVehicle2 = new ParkingVehicle();
-        boolean carParkStatus2 = parkingLot.getVehicleParked(parkedVehicle2);    Integer slotNumber = parkingLot.findVehicle(parkedVehicle);
+        boolean carParkStatus1 = parkingLot.getVehicleParked(new ParkingVehicle());
+        boolean carParkStatus2 = parkingLot.getVehicleParked(new ParkingVehicle());
+        Integer slotNumber = parkingLot.findVehicle(parkedVehicle);
+        System.out.println(slotNumber);
         Assert.assertEquals("1",""+slotNumber);
     }
 
@@ -108,6 +108,17 @@ public class ParkingLotRepositoryTest {
         ParkingVehicle parkedVehicle1 = new ParkingVehicle();
         boolean carParkStatus1 = parkingLot.getVehicleParked(parkedVehicle1);
         ParkingVehicle parkedVehicle2 = new ParkingVehicle();
+        boolean carParkStatus2 = parkingLot.getVehicleParked(parkedVehicle2);
+        Assert.assertTrue(carParkStatus && carParkStatus1 && carParkStatus2);
+    }
+
+    @Test
+    public void givenHandicapDriver_whenVehicleToBeParked_thenParkToNearestSlot() {
+        boolean carParkStatus = parkingLot.getVehicleParked(parkedVehicle);
+        ParkingVehicle parkedVehicle1 = new ParkingVehicle();
+        boolean carParkStatus1 = parkingLot.getVehicleParked(parkedVehicle1);
+        ParkingVehicle parkedVehicle2 = new ParkingVehicle();
+        parkedVehicle2.isHandicap = true;
         boolean carParkStatus2 = parkingLot.getVehicleParked(parkedVehicle2);
         Assert.assertTrue(carParkStatus && carParkStatus1 && carParkStatus2);
     }
