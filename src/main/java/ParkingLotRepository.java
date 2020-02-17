@@ -13,11 +13,11 @@ public class ParkingLotRepository {
     }
 
     public boolean getVehicleParked(ParkingVehicle parkedCar) {
-        if (this.parkedCars.size() < this.totalSize) {
+        if (this.parkedCars.size() < this.totalSize && this.parkedCars.containsValue(parkedCar) == false) {
             this.parkedCars.put(getSlotNumber(parkedCar.isHandicap), parkedCar);
+            return true;
         }
-        System.out.println(parkedCars);
-        return true;
+        throw new ParkingLotException("Vehicle Already Parked", ParkingLotException.ExceptionType.VEHICLE_ALREADY_PARKED);
     }
 
     private Integer getSlotNumber(boolean isHandicap) {
@@ -58,7 +58,7 @@ public class ParkingLotRepository {
             parkedCars.remove(isCarParked);
             return true;
         }
-        throw new ParkingLotException("Enter valid Car details", ParkingLotException.ExceptionType.NO_SUCH_CAR_NUMBER);
+        throw new ParkingLotException("Enter valid Car details", ParkingLotException.ExceptionType.NO_SUCH_VEHICLE_NUMBER);
     }
 
     public Integer isCarParked(ParkingVehicle unparkVehicle) {
@@ -74,6 +74,6 @@ public class ParkingLotRepository {
             return parkedCars.get(carSlotNumber)
                     .getLocalDateTime();
         }
-        throw new ParkingLotException("Enter valid Car details", ParkingLotException.ExceptionType.NO_SUCH_CAR_NUMBER);
+        throw new ParkingLotException("Enter valid Car details", ParkingLotException.ExceptionType.NO_SUCH_VEHICLE_NUMBER);
     }
 }

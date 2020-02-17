@@ -1,7 +1,6 @@
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
-import sun.text.resources.cldr.ext.FormatData_yo_BJ;
 
 public class ParkingLotRepositoryTest {
 
@@ -11,7 +10,7 @@ public class ParkingLotRepositoryTest {
     @Before
     public void setup() {
         parkedVehicle = new ParkingVehicle();
-        parkingLot = new ParkingLot(4,2);
+        parkingLot = new ParkingLot(4, 2);
     }
 
     @Test
@@ -19,6 +18,16 @@ public class ParkingLotRepositoryTest {
         boolean carParkStatus = parkingLot.getVehicleParked(parkedVehicle);
         ParkingVehicle parkedVehicle1 = new ParkingVehicle();
         Assert.assertTrue(carParkStatus);
+    }
+
+    @Test
+    public void givenSameCarToPark_thenReturnException() {
+        try {
+            boolean carParkStatus = parkingLot.getVehicleParked(parkedVehicle);
+            boolean carParkStatus1 = parkingLot.getVehicleParked(parkedVehicle);
+        } catch (ParkingLotException e){
+            Assert.assertEquals(ParkingLotException.ExceptionType.VEHICLE_ALREADY_PARKED, e.type);
+        }
     }
 
     @Test
@@ -35,7 +44,7 @@ public class ParkingLotRepositoryTest {
             boolean carParkStatus = parkingLot.getVehicleParked(parkedVehicle);
             boolean carUnParkStatus = parkingLot.getVehicleUnparked(parkedVehicle);
         } catch (ParkingLotException e) {
-            Assert.assertEquals(ParkingLotException.ExceptionType.NO_SUCH_CAR_NUMBER, e.type);
+            Assert.assertEquals(ParkingLotException.ExceptionType.NO_SUCH_VEHICLE_NUMBER, e.type);
         }
     }
 
@@ -92,7 +101,7 @@ public class ParkingLotRepositoryTest {
         boolean carParkStatus2 = parkingLot.getVehicleParked(new ParkingVehicle());
         Integer slotNumber = parkingLot.findVehicle(parkedVehicle);
         System.out.println(slotNumber);
-        Assert.assertEquals("1",""+slotNumber);
+        Assert.assertEquals("1", "" + slotNumber);
     }
 
     @Test
