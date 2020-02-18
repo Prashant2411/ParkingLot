@@ -18,7 +18,6 @@ public class ParkingLotRepository {
             this.parkedCars.put(slotNumber.getSlotNumber(parkedCar.isHandicap), parkedCar);
         } else if (this.parkedCars.containsValue(parkedCar) == true)
             throw new ParkingLotException("Vehicle Already Parked", ParkingLotException.ExceptionType.VEHICLE_ALREADY_PARKED);
-        System.out.println(parkedCars);
         return true;
     }
 

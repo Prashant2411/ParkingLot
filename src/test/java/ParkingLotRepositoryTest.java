@@ -117,7 +117,9 @@ public class ParkingLotRepositoryTest {
         boolean carParkStatus1 = parkingLot.getVehicleParked(parkedVehicle1);
         ParkingVehicle parkedVehicle2 = new ParkingVehicle();
         boolean carParkStatus2 = parkingLot.getVehicleParked(parkedVehicle2);
-        Assert.assertTrue(carParkStatus && carParkStatus1 && carParkStatus2);
+        Assert.assertEquals("1",""+parkingLot.findVehicle(parkedVehicle));
+        Assert.assertEquals("3",""+parkingLot.findVehicle(parkedVehicle1));
+        Assert.assertEquals("2",""+parkingLot.findVehicle(parkedVehicle2));
     }
 
     @Test
@@ -128,6 +130,6 @@ public class ParkingLotRepositoryTest {
         ParkingVehicle parkedVehicle2 = new ParkingVehicle();
         parkedVehicle2.isHandicap = true;
         boolean carParkStatus2 = parkingLot.getVehicleParked(parkedVehicle2);
-        Assert.assertTrue(carParkStatus && carParkStatus1 && carParkStatus2);
+        Assert.assertEquals("2",""+parkingLot.findVehicle(parkedVehicle2));
     }
 }
