@@ -100,7 +100,6 @@ public class ParkingLotRepositoryTest {
         boolean carParkStatus1 = parkingLot.getVehicleParked(new ParkingVehicle());
         boolean carParkStatus2 = parkingLot.getVehicleParked(new ParkingVehicle());
         Integer slotNumber = parkingLot.findVehicle(parkedVehicle);
-        System.out.println(slotNumber);
         Assert.assertEquals("1", "" + slotNumber);
     }
 
