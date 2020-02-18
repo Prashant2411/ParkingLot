@@ -1,3 +1,5 @@
+import java.util.Map;
+
 public class ParkingLot {
 
     private ParkingLotRepository parkingLotRepository;
@@ -31,5 +33,9 @@ public class ParkingLot {
     private void getParkedTime(ParkingVehicle unparkedVehicle) {
         String parkingTime = parkingLotRepository.getParkingTime(unparkedVehicle);
         new ParkingLotOwner().setVehicleParkingTime(parkingTime);
+    }
+
+    public Map<Integer, ParkingVehicle> findVehicleByAttribute(String attribute) {
+        return parkingLotRepository.findVehicle(attribute);
     }
 }

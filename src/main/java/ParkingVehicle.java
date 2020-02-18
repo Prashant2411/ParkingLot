@@ -6,6 +6,7 @@ public class ParkingVehicle {
     private String localDateTime;
     public boolean isHandicap = false;
     VehicleSize vehicleSize;
+    public String carColour = null;
 
     public enum VehicleSize{
         LARGE, SMALL;
@@ -20,5 +21,15 @@ public class ParkingVehicle {
 
     public String getLocalDateTime() {
         return this.localDateTime;
+    }
+
+    @Override
+    public String toString() {
+        return "ParkingVehicle{" +
+                "localDateTime='" + localDateTime + '\'' +
+                ", isHandicap=" + isHandicap +
+                ", vehicleSize=" + vehicleSize +
+                ", carColour='" + carColour + '\'' +
+                '}';
     }
 }

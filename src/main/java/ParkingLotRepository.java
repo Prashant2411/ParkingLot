@@ -1,5 +1,6 @@
 import java.util.HashMap;
 import java.util.Map;
+import java.util.stream.Collectors;
 
 public class ParkingLotRepository {
 
@@ -44,5 +45,13 @@ public class ParkingLotRepository {
                     .getLocalDateTime();
         }
         throw new ParkingLotException("Enter valid Car details", ParkingLotException.ExceptionType.NO_SUCH_VEHICLE_NUMBER);
+    }
+
+    public Map<Integer, ParkingVehicle> findVehicle(String attribute) {
+        Map<Integer, ParkingVehicle> foundResult = parkedCars.entrySet()
+                .stream()
+                .filter(values -> parkedCars.get(values.getKey()).toString().contains(attribute))
+                .collect(Collectors.toMap(values -> values.getKey(), values -> values.getValue()));
+        return foundResult;
     }
 }

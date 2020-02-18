@@ -2,6 +2,9 @@ import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
+import java.util.List;
+import java.util.Map;
+
 public class ParkingLotRepositoryTest {
 
     ParkingVehicle parkedVehicle = null;
@@ -16,7 +19,6 @@ public class ParkingLotRepositoryTest {
     @Test
     public void whenVehicleArrives_shouldParkInLot() {
         boolean carParkStatus = parkingLot.getVehicleParked(parkedVehicle);
-        ParkingVehicle parkedVehicle1 = new ParkingVehicle(ParkingVehicle.VehicleSize.SMALL);
         Assert.assertTrue(carParkStatus);
     }
 
@@ -147,5 +149,17 @@ public class ParkingLotRepositoryTest {
         ParkingVehicle parkingVehicle2 = new ParkingVehicle(ParkingVehicle.VehicleSize.SMALL);
         boolean vehicleParked2 = parkingLot.getVehicleParked(parkingVehicle2);
         Assert.assertTrue(vehicleParked1);
+    }
+
+    @Test
+    public void givenMultipleVehicle_whenAskedWhiteCarLocation_thenReturnWhiteCar() {
+        boolean vehicleParked = parkingLot.getVehicleParked(parkedVehicle);
+        ParkingVehicle parkingVehicle1 = new ParkingVehicle(ParkingVehicle.VehicleSize.LARGE);
+        boolean vehicleParked1 = parkingLot.getVehicleParked(parkingVehicle1);
+        ParkingVehicle parkingVehicle2 = new ParkingVehicle(ParkingVehicle.VehicleSize.SMALL);
+        parkingVehicle2.carColour="White";
+        boolean vehicleParked2 = parkingLot.getVehicleParked(parkingVehicle2);
+        Map<Integer, ParkingVehicle> foundResult = parkingLot.findVehicleByAttribute("White");
+        Assert.assertEquals("White",foundResult.get(2).carColour);
     }
 }
