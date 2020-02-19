@@ -35,7 +35,7 @@ public class ParkingLot {
         new ParkingLotOwner().setVehicleParkingTime(parkingTime);
     }
 
-    public Map<Integer, ParkingVehicle> findVehicleByAttribute(String attribute) {
+    public Map<Integer, ParkingVehicle> findVehicleByAttribute(String... attribute) {
         return parkingLotRepository.findVehicle(attribute);
     }
 }

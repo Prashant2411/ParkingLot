@@ -2,7 +2,6 @@ import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
-import java.util.List;
 import java.util.Map;
 
 public class ParkingLotRepositoryTest {
@@ -161,5 +160,19 @@ public class ParkingLotRepositoryTest {
         boolean vehicleParked2 = parkingLot.getVehicleParked(parkingVehicle2);
         Map<Integer, ParkingVehicle> foundResult = parkingLot.findVehicleByAttribute("White");
         Assert.assertEquals("White",foundResult.get(2).carColour);
+    }
+
+    @Test
+    public void givenMultipleVehicle_whenAskedMultipleAttributesForLocation_thenReturnSearchResult() {
+        boolean vehicleParked = parkingLot.getVehicleParked(parkedVehicle);
+        ParkingVehicle parkingVehicle1 = new ParkingVehicle(ParkingVehicle.VehicleSize.LARGE);
+        boolean vehicleParked1 = parkingLot.getVehicleParked(parkingVehicle1);
+        ParkingVehicle parkingVehicle2 = new ParkingVehicle(ParkingVehicle.VehicleSize.SMALL);
+        parkingVehicle2.carColour="Blue";
+        parkingVehicle2.modelName="Toyota";
+        boolean vehicleParked2 = parkingLot.getVehicleParked(parkingVehicle2);
+        Map<Integer, ParkingVehicle> foundResult = parkingLot.findVehicleByAttribute("Blue", "Toyota");
+        Assert.assertEquals("Blue",foundResult.get(2).carColour);
+        Assert.assertEquals("Toyota",foundResult.get(2).modelName);
     }
 }

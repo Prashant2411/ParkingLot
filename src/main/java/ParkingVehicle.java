@@ -7,6 +7,7 @@ public class ParkingVehicle {
     public boolean isHandicap = false;
     VehicleSize vehicleSize;
     public String carColour = null;
+    public String plateNumber, parkingAttendentName, modelName;
 
     public enum VehicleSize{
         LARGE, SMALL;
@@ -30,6 +31,9 @@ public class ParkingVehicle {
                 ", isHandicap=" + isHandicap +
                 ", vehicleSize=" + vehicleSize +
                 ", carColour='" + carColour + '\'' +
+                ", plateNumber='" + plateNumber + '\'' +
+                ", parkingAttendentName='" + parkingAttendentName + '\'' +
+                ", modelName='" + modelName + '\'' +
                 '}';
     }
 }

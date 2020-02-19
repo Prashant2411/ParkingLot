@@ -1,3 +1,5 @@
+import java.lang.reflect.Array;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.stream.Collectors;
@@ -7,6 +9,7 @@ public class ParkingLotRepository {
     public Map<Integer, ParkingVehicle> parkedCars = new HashMap<>();
     public Integer noOfLots, totalSize;
     SlotNumber slotNumber;
+    int q = 0;
 
     public ParkingLotRepository(Integer totalSize, Integer noOfLots) {
         this.noOfLots = noOfLots;
@@ -47,11 +50,21 @@ public class ParkingLotRepository {
         throw new ParkingLotException("Enter valid Car details", ParkingLotException.ExceptionType.NO_SUCH_VEHICLE_NUMBER);
     }
 
-    public Map<Integer, ParkingVehicle> findVehicle(String attribute) {
+    public Map<Integer, ParkingVehicle> findVehicle(String... attribute) {
         Map<Integer, ParkingVehicle> foundResult = parkedCars.entrySet()
                 .stream()
-                .filter(values -> parkedCars.get(values.getKey()).toString().contains(attribute))
+                .filter(values -> {
+                    for (String attribute1 : attribute) {
+                        if (parkedCars.get(values.getKey()).toString().contains(attribute1) == false)
+                            return false;
+                    }
+                    return true;
+                })
                 .collect(Collectors.toMap(values -> values.getKey(), values -> values.getValue()));
         return foundResult;
+    }
+
+    private int getCounter() {
+        return q++;
     }
 }
