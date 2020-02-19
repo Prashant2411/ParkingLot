@@ -15,7 +15,6 @@ public class SlotNumber {
     }
 
     public Integer getSlotNumber(boolean isHandicap) {
-        Integer s;
         if (isHandicap == true)
             return getHandicapSlotNumber();
         return getNonHandicapSlotNumber(isHandicap);

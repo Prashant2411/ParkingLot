@@ -1,5 +1,7 @@
 package com.bridgelabz.parkinglot.services;
 
+import com.bridgelabz.parkinglot.enumerate.VehicleSize;
+
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
@@ -10,10 +12,6 @@ public class ParkingVehicle {
     VehicleSize vehicleSize;
     public String carColour = null;
     public String plateNumber, parkingAttendentName, modelName;
-
-    public enum VehicleSize{
-        LARGE, SMALL;
-    }
 
     public ParkingVehicle(VehicleSize vehicleSize) {
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
