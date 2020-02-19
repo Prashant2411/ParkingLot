@@ -9,40 +9,40 @@ import java.util.Map;
 
 public class ParkingLot {
 
-    private ParkingSystem parkingLotRepository;
+    private ParkingSystem parkingSystem;
     private ParkingLotStatus parkingLotStatus;
     public static Integer totalSize, noOfLots;
 
     public ParkingLot(Integer totalSize, Integer noOfLots) {
         this.totalSize = totalSize;
         this.noOfLots = noOfLots;
-        parkingLotRepository = new ParkingSystem(totalSize, noOfLots);
-        parkingLotStatus = new ParkingLotStatus(parkingLotRepository.parkedCars);
+        parkingSystem = new ParkingSystem(totalSize, noOfLots);
+        parkingLotStatus = new ParkingLotStatus(parkingSystem.parkedCars);
     }
 
     public boolean getVehicleParked(ParkingVehicle parkedVehicle) {
-        boolean parkingStatus = parkingLotRepository.getVehicleParked(parkedVehicle);
+        boolean parkingStatus = parkingSystem.getVehicleParked(parkedVehicle);
         parkingLotStatus.parkingLotStatus();
         return parkingStatus;
     }
 
     public boolean getVehicleUnparked(ParkingVehicle unparkVehicle) {
         this.getParkedTime(unparkVehicle);
-        boolean unparkingStatus = parkingLotRepository.getVehicleUnparked(unparkVehicle);
+        boolean unparkingStatus = parkingSystem.getVehicleUnparked(unparkVehicle);
         parkingLotStatus.parkingLotStatus();
         return unparkingStatus;
     }
 
     public Integer findVehicle(ParkingVehicle parkedVehicle) {
-        return parkingLotRepository.isCarParked(parkedVehicle);
+        return parkingSystem.isCarParked(parkedVehicle);
     }
 
     private void getParkedTime(ParkingVehicle unparkedVehicle) {
-        String parkingTime = parkingLotRepository.getParkingTime(unparkedVehicle);
+        String parkingTime = parkingSystem.getParkingTime(unparkedVehicle);
         new ParkingLotOwner().setVehicleParkingTime(parkingTime);
     }
 
     public Map<Integer, ParkingVehicle> findVehicleByAttribute(String... attribute) {
-        return parkingLotRepository.findVehicle(attribute);
+        return parkingSystem.findVehicle(attribute);
     }
 }

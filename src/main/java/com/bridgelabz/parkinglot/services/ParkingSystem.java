@@ -9,20 +9,18 @@ import java.util.stream.Collectors;
 public class ParkingSystem {
 
     public Map<Integer, ParkingVehicle> parkedCars = new HashMap<>();
-    public Integer noOfLots, totalSize;
-    SlotNumber slotNumber;
-    int q = 0;
+    private Integer noOfLots, totalSize;
 
     public ParkingSystem(Integer totalSize, Integer noOfLots) {
         this.noOfLots = noOfLots;
         this.totalSize = totalSize;
-        slotNumber = new SlotNumber(parkedCars, this.noOfLots, this.totalSize);
     }
 
     public boolean getVehicleParked(ParkingVehicle parkedCar) {
-        if (this.parkedCars.size() <SlotNumber this.totalSize && this.parkedCars.containsValue(parkedCar) == false) {
-            this.parkedCars.put(slotNumber.getSlotNumber(parkedCar.driverType), parkedCar);
-        } else if (this.parkedCars.containsValue(parkedCar) == true)
+        SlotNumber slotNumber = new SlotNumber(parkedCars, noOfLots, totalSize);
+        if (!(this.parkedCars.size() < this.totalSize && this.parkedCars.containsValue(parkedCar))) {
+            this.parkedCars.put(parkedCar.driverType.getSlotNumber(slotNumber), parkedCar);
+        } else if (this.parkedCars.containsValue(parkedCar))
             throw new ParkingLotException("Vehicle Already Parked", ParkingLotException.ExceptionType.VEHICLE_ALREADY_PARKED);
         return true;
     }
@@ -53,20 +51,17 @@ public class ParkingSystem {
     }
 
     public Map<Integer, ParkingVehicle> findVehicle(String... attribute) {
-        Map<Integer, ParkingVehicle> foundResult = parkedCars.entrySet()
+        return parkedCars.entrySet()
                 .stream()
-                .filter(values -> {
-                    for (String attribute1 : attribute) {
-                        if (parkedCars.get(values.getKey()).toString().contains(attribute1) == false)
-                            return false;
-                    }
-                    return true;
-                })
-                .collect(Collectors.toMap(values -> values.getKey(), values -> values.getValue()));
-        return foundResult;
+                .filter(values -> getFilter(values, attribute))
+                .collect(Collectors.toMap(Map.Entry::getKey, Map.Entry::getValue));
     }
 
-    private int getCounter() {
-        return q++;
+    private boolean getFilter(Map.Entry<Integer, ParkingVehicle> values, String... attribute) {
+        for (String attribute1 : attribute) {
+            if (!(parkedCars.get(values.getKey()).toString().contains(attribute1)))
+                return false;
+        }
+        return true;
     }
 }

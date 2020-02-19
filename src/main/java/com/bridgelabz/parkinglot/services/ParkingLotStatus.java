@@ -21,10 +21,7 @@ public class ParkingLotStatus {
         if (this.parkedCars.size() == ParkingLot.totalSize) {
             parkingLotObserver.notifyObservers(true);
         }
-        if (airportSecuritySystem.isParkingLotFull == true) {
-            if (this.parkedCars.size() < ParkingLot.totalSize) {
-                parkingLotObserver.notifyObservers(false);
-            }
-        }
+        if (airportSecuritySystem.isParkingLotFull == true && this.parkedCars.size() < ParkingLot.totalSize)
+            parkingLotObserver.notifyObservers(false);
     }
 }

@@ -17,8 +17,9 @@ public class ParkingSystemTest {
 
     @Before
     public void setup() {
-        parkedVehicle = new ParkingVehicle(DriverType.NORMAL_VEHICLE_DRIVER);
         parkingLot = new ParkingLot(4, 2);
+        parkedVehicle = new ParkingVehicle(DriverType.NORMAL_VEHICLE_DRIVER);
+
     }
 
     @Test
@@ -133,7 +134,7 @@ public class ParkingSystemTest {
         boolean carParkStatus = parkingLot.getVehicleParked(parkedVehicle);
         ParkingVehicle parkedVehicle1 = new ParkingVehicle(DriverType.NORMAL_VEHICLE_DRIVER);
         boolean carParkStatus1 = parkingLot.getVehicleParked(parkedVehicle1);
-        ParkingVehicle parkedVehicle2 = new ParkingVehicle(DriverType.NORMAL_VEHICLE_DRIVER);
+        ParkingVehicle parkedVehicle2 = new ParkingVehicle(DriverType.HANDICAP_DRIVER);
         boolean carParkStatus2 = parkingLot.getVehicleParked(parkedVehicle2);
         Assert.assertEquals("2",""+parkingLot.findVehicle(parkedVehicle2));
     }
@@ -173,7 +174,7 @@ public class ParkingSystemTest {
         ParkingVehicle parkingVehicle1 = new ParkingVehicle(DriverType.NORMAL_VEHICLE_DRIVER);
         boolean vehicleParked1 = parkingLot.getVehicleParked(parkingVehicle1);
         ParkingVehicle parkingVehicle2 = new ParkingVehicle(DriverType.NORMAL_VEHICLE_DRIVER);
-       parkingVehicle2.carColour="Blue";
+        parkingVehicle2.carColour="Blue";
         parkingVehicle2.modelName="Toyota";
         boolean vehicleParked2 = parkingLot.getVehicleParked(parkingVehicle2);
         Map<Integer, ParkingVehicle> foundResult = parkingLot.findVehicleByAttribute("Blue", "Toyota");
