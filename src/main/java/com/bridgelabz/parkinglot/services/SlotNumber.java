@@ -1,7 +1,5 @@
 package com.bridgelabz.parkinglot.services;
 
-import com.bridgelabz.parkinglot.services.ParkingVehicle;
-
 import java.util.Map;
 
 public class SlotNumber {

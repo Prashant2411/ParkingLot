@@ -1,6 +1,4 @@
-package com.bridgelabz.parkinglot.notifier;
-
-import com.bridgelabz.parkinglot.notifier.ParkingLotObservers;
+package com.bridgelabz.parkinglot.services;
 
 import java.util.ArrayList;
 import java.util.List;

@@ -1,4 +1,4 @@
-package com.bridgelabz.parkinglot.notifier;
+package com.bridgelabz.parkinglot.services;
 
 public class ParkingLotOwner implements ParkingLotObservers {
 

@@ -1,7 +1,7 @@
 import com.bridgelabz.parkinglot.exception.ParkingLotException;
-import com.bridgelabz.parkinglot.notifier.AirportSecuritySystem;
-import com.bridgelabz.parkinglot.notifier.ParkingLotOwner;
-import com.bridgelabz.parkinglot.services.ParkingLot;
+import com.bridgelabz.parkinglot.services.AirportSecuritySystem;
+import com.bridgelabz.parkinglot.services.ParkingLotOwner;
+import com.bridgelabz.parkinglot.ParkingLot;
 import com.bridgelabz.parkinglot.services.ParkingVehicle;
 import org.junit.Assert;
 import org.junit.Before;
