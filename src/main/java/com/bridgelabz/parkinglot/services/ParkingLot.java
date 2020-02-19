@@ -7,14 +7,14 @@ import java.util.Map;
 
 public class ParkingLot {
 
-    private ParkingLotRepository parkingLotRepository;
+    private ParkingSystem parkingLotRepository;
     private ParkingLotStatus parkingLotStatus;
     public static Integer totalSize, noOfLots;
 
     public ParkingLot(Integer totalSize, Integer noOfLots) {
         this.totalSize = totalSize;
         this.noOfLots = noOfLots;
-        parkingLotRepository = new ParkingLotRepository(totalSize, noOfLots);
+        parkingLotRepository = new ParkingSystem(totalSize, noOfLots);
         parkingLotStatus = new ParkingLotStatus(parkingLotRepository.parkedCars);
     }
 

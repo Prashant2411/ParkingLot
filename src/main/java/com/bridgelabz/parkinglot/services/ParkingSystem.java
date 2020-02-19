@@ -8,14 +8,14 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.stream.Collectors;
 
-public class ParkingLotRepository {
+public class ParkingSystem {
 
     public Map<Integer, ParkingVehicle> parkedCars = new HashMap<>();
     public Integer noOfLots, totalSize;
     SlotNumber slotNumber;
     int q = 0;
 
-    public ParkingLotRepository(Integer totalSize, Integer noOfLots) {
+    public ParkingSystem(Integer totalSize, Integer noOfLots) {
         this.noOfLots = noOfLots;
         this.totalSize = totalSize;
         slotNumber = new SlotNumber(parkedCars, this.noOfLots, this.totalSize);

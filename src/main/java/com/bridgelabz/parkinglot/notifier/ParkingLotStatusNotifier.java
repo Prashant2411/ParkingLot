@@ -5,7 +5,7 @@ import com.bridgelabz.parkinglot.notifier.ParkingLotObservers;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ParkingLotObserves {
+public class ParkingLotStatusNotifier {
     List<ParkingLotObservers> parkingLotObserver = new ArrayList<>();
 
     public void addObserver(ParkingLotObservers parkingLotObserver){

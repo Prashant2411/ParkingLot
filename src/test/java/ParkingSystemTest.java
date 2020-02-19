@@ -9,7 +9,7 @@ import org.junit.Test;
 
 import java.util.Map;
 
-public class ParkingLotRepositoryTest {
+public class ParkingSystemTest {
 
     ParkingVehicle parkedVehicle = null;
     ParkingLot parkingLot = null;

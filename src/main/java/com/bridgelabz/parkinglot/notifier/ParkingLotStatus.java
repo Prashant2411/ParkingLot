@@ -1,7 +1,5 @@
 package com.bridgelabz.parkinglot.notifier;
 
-import com.bridgelabz.parkinglot.notifier.AirportSecuritySystem;
-import com.bridgelabz.parkinglot.notifier.ParkingLotOwner;
 import com.bridgelabz.parkinglot.services.ParkingLot;
 
 import java.util.Map;
@@ -11,7 +9,7 @@ public class ParkingLotStatus {
     Map<Integer, Object> parkedCars;
     ParkingLotOwner parkingLotOwner = new ParkingLotOwner();
     AirportSecuritySystem airportSecuritySystem = new AirportSecuritySystem();
-    ParkingLotObserves parkingLotObserver = new ParkingLotObserves();
+    ParkingLotStatusNotifier parkingLotObserver = new ParkingLotStatusNotifier();
 
     public ParkingLotStatus(Map parkedCars) {
         this.parkedCars = parkedCars;
