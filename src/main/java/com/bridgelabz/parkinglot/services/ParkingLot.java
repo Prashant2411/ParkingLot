@@ -1,3 +1,8 @@
+package com.bridgelabz.parkinglot.services;
+
+import com.bridgelabz.parkinglot.notifier.ParkingLotOwner;
+import com.bridgelabz.parkinglot.notifier.ParkingLotStatus;
+
 import java.util.Map;
 
 public class ParkingLot {

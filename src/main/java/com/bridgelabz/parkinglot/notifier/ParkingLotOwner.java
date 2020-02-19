@@ -1,3 +1,5 @@
+package com.bridgelabz.parkinglot.notifier;
+
 public class ParkingLotOwner implements ParkingLotObservers {
 
     public static boolean isParkingLotFull;

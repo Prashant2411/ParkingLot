@@ -1,3 +1,5 @@
+package com.bridgelabz.parkinglot.services;
+
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
@@ -26,7 +28,7 @@ public class ParkingVehicle {
 
     @Override
     public String toString() {
-        return "ParkingVehicle{" +
+        return "com.bridgelabz.parkinglot.services.ParkingVehicle{" +
                 "localDateTime='" + localDateTime + '\'' +
                 ", isHandicap=" + isHandicap +
                 ", vehicleSize=" + vehicleSize +

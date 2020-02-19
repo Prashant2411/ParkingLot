@@ -1,3 +1,7 @@
+package com.bridgelabz.parkinglot.services;
+
+import com.bridgelabz.parkinglot.exception.ParkingLotException;
+
 import java.lang.reflect.Array;
 import java.util.Arrays;
 import java.util.HashMap;

@@ -1,3 +1,8 @@
+import com.bridgelabz.parkinglot.exception.ParkingLotException;
+import com.bridgelabz.parkinglot.notifier.AirportSecuritySystem;
+import com.bridgelabz.parkinglot.notifier.ParkingLotOwner;
+import com.bridgelabz.parkinglot.services.ParkingLot;
+import com.bridgelabz.parkinglot.services.ParkingVehicle;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
@@ -168,7 +173,7 @@ public class ParkingLotRepositoryTest {
         ParkingVehicle parkingVehicle1 = new ParkingVehicle(ParkingVehicle.VehicleSize.LARGE);
         boolean vehicleParked1 = parkingLot.getVehicleParked(parkingVehicle1);
         ParkingVehicle parkingVehicle2 = new ParkingVehicle(ParkingVehicle.VehicleSize.SMALL);
-        parkingVehicle2.carColour="Blue";
+       parkingVehicle2.carColour="Blue";
         parkingVehicle2.modelName="Toyota";
         boolean vehicleParked2 = parkingLot.getVehicleParked(parkingVehicle2);
         Map<Integer, ParkingVehicle> foundResult = parkingLot.findVehicleByAttribute("Blue", "Toyota");
