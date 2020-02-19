@@ -1,6 +1,6 @@
 package com.bridgelabz.parkinglot.services;
 
-import com.bridgelabz.parkinglot.enumerate.VehicleSize;
+import com.bridgelabz.parkinglot.enumerate.DriverType;
 
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
@@ -8,16 +8,15 @@ import java.time.format.DateTimeFormatter;
 public class ParkingVehicle {
 
     private String localDateTime;
-    public boolean isHandicap = false;
-    VehicleSize vehicleSize;
+    DriverType driverType;
     public String carColour = null;
     public String plateNumber, parkingAttendentName, modelName;
 
-    public ParkingVehicle(VehicleSize vehicleSize) {
+    public ParkingVehicle(DriverType driverType) {
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
         String formatDateTime = LocalDateTime.now().format(formatter);
         this.localDateTime = formatDateTime;
-        this.vehicleSize = vehicleSize;
+        this.driverType = driverType;
     }
 
     public String getLocalDateTime() {
@@ -26,10 +25,9 @@ public class ParkingVehicle {
 
     @Override
     public String toString() {
-        return "com.bridgelabz.parkinglot.services.ParkingVehicle{" +
+        return "ParkingVehicle{" +
                 "localDateTime='" + localDateTime + '\'' +
-                ", isHandicap=" + isHandicap +
-                ", vehicleSize=" + vehicleSize +
+                ", driverType=" + driverType +
                 ", carColour='" + carColour + '\'' +
                 ", plateNumber='" + plateNumber + '\'' +
                 ", parkingAttendentName='" + parkingAttendentName + '\'' +

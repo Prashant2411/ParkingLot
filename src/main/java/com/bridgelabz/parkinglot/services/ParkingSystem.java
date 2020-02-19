@@ -20,8 +20,8 @@ public class ParkingSystem {
     }
 
     public boolean getVehicleParked(ParkingVehicle parkedCar) {
-        if (this.parkedCars.size() < this.totalSize && this.parkedCars.containsValue(parkedCar) == false) {
-            this.parkedCars.put(slotNumber.getSlotNumber(parkedCar.isHandicap), parkedCar);
+        if (this.parkedCars.size() <SlotNumber this.totalSize && this.parkedCars.containsValue(parkedCar) == false) {
+            this.parkedCars.put(slotNumber.getSlotNumber(parkedCar.driverType), parkedCar);
         } else if (this.parkedCars.containsValue(parkedCar) == true)
             throw new ParkingLotException("Vehicle Already Parked", ParkingLotException.ExceptionType.VEHICLE_ALREADY_PARKED);
         return true;

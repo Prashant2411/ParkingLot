@@ -1,3 +1,4 @@
+import com.bridgelabz.parkinglot.enumerate.DriverType;
 import com.bridgelabz.parkinglot.exception.ParkingLotException;
 import com.bridgelabz.parkinglot.services.AirportSecuritySystem;
 import com.bridgelabz.parkinglot.services.ParkingLotOwner;
@@ -16,7 +17,7 @@ public class ParkingSystemTest {
 
     @Before
     public void setup() {
-        parkedVehicle = new ParkingVehicle(ParkingVehicle.VehicleSize.SMALL);
+        parkedVehicle = new ParkingVehicle(DriverType.NORMAL_VEHICLE_DRIVER);
         parkingLot = new ParkingLot(4, 2);
     }
 
@@ -56,13 +57,13 @@ public class ParkingSystemTest {
     @Test
     public void whenMoreVehicleThenAvailableLotSize_shouldSetParkingLotStatusFull() {
         boolean carParkStatus = parkingLot.getVehicleParked(parkedVehicle);
-        ParkingVehicle parkedVehicle1 = new ParkingVehicle(ParkingVehicle.VehicleSize.SMALL);
+        ParkingVehicle parkedVehicle1 = new ParkingVehicle(DriverType.NORMAL_VEHICLE_DRIVER);
         boolean carParkStatus1 = parkingLot.getVehicleParked(parkedVehicle1);
-        ParkingVehicle parkedVehicle2 = new ParkingVehicle(ParkingVehicle.VehicleSize.SMALL);
+        ParkingVehicle parkedVehicle2 = new ParkingVehicle(DriverType.NORMAL_VEHICLE_DRIVER);
         boolean carParkStatus2 = parkingLot.getVehicleParked(parkedVehicle2);
-        ParkingVehicle parkedVehicle3 = new ParkingVehicle(ParkingVehicle.VehicleSize.SMALL);
+        ParkingVehicle parkedVehicle3 = new ParkingVehicle(DriverType.NORMAL_VEHICLE_DRIVER);
         boolean carParkStatus3 = parkingLot.getVehicleParked(parkedVehicle3);
-        ParkingVehicle parkedVehicle4 = new ParkingVehicle(ParkingVehicle.VehicleSize.SMALL);
+        ParkingVehicle parkedVehicle4 = new ParkingVehicle(DriverType.NORMAL_VEHICLE_DRIVER);
         boolean carParkStatus4 = parkingLot.getVehicleParked(parkedVehicle4);
         Assert.assertTrue(new ParkingLotOwner().isParkingLotFull);
     }
@@ -70,20 +71,20 @@ public class ParkingSystemTest {
     @Test
     public void whenParkingLotStatusFull_shouldSetSecurityStaffStatusFull() {
         boolean carParkStatus = parkingLot.getVehicleParked(parkedVehicle);
-        ParkingVehicle parkedVehicle1 = new ParkingVehicle(ParkingVehicle.VehicleSize.SMALL);
+        ParkingVehicle parkedVehicle1 = new ParkingVehicle(DriverType.NORMAL_VEHICLE_DRIVER);
         boolean carParkStatus1 = parkingLot.getVehicleParked(parkedVehicle1);
-        ParkingVehicle parkedVehicle2 = new ParkingVehicle(ParkingVehicle.VehicleSize.SMALL);
+        ParkingVehicle parkedVehicle2 = new ParkingVehicle(DriverType.NORMAL_VEHICLE_DRIVER);
         boolean carParkStatus2 = parkingLot.getVehicleParked(parkedVehicle2);
-        ParkingVehicle parkedVehicle3 = new ParkingVehicle(ParkingVehicle.VehicleSize.SMALL);
+        ParkingVehicle parkedVehicle3 = new ParkingVehicle(DriverType.NORMAL_VEHICLE_DRIVER);
         boolean carParkStatus3 = parkingLot.getVehicleParked(parkedVehicle3);
-        ParkingVehicle parkedVehicle4 = new ParkingVehicle(ParkingVehicle.VehicleSize.SMALL);
+        ParkingVehicle parkedVehicle4 = new ParkingVehicle(DriverType.NORMAL_VEHICLE_DRIVER);
         boolean carParkStatus4 = parkingLot.getVehicleParked(parkedVehicle4);
         Assert.assertTrue(new AirportSecuritySystem().isParkingLotFull);
     }
 
     @Test
     public void whenMoreThen100Vehicle_ifAnyVehicleUnparked_shouldSetParkingLotStatusNotFull() {
-        ParkingVehicle parkedVehicle1 = new ParkingVehicle(ParkingVehicle.VehicleSize.SMALL);
+        ParkingVehicle parkedVehicle1 = new ParkingVehicle(DriverType.NORMAL_VEHICLE_DRIVER);
         boolean carParkStatus = parkingLot.getVehicleParked(parkedVehicle);
         boolean carParkStatus1 = parkingLot.getVehicleParked(parkedVehicle1);
         boolean carUnparkStatus = parkingLot.getVehicleUnparked(parkedVehicle);
@@ -92,7 +93,7 @@ public class ParkingSystemTest {
 
     @Test
     public void whenParkingLotStatusFull_shouldSetSecurityStaffStatusNotFull() throws InterruptedException {
-        ParkingVehicle parkedVehicle1 = new ParkingVehicle(ParkingVehicle.VehicleSize.SMALL);
+        ParkingVehicle parkedVehicle1 = new ParkingVehicle(DriverType.NORMAL_VEHICLE_DRIVER);
         boolean carParkStatus = parkingLot.getVehicleParked(parkedVehicle);
         boolean carParkStatus1 = parkingLot.getVehicleParked(parkedVehicle1);
         boolean carUnparkStatus = parkingLot.getVehicleUnparked(parkedVehicle);
@@ -102,8 +103,8 @@ public class ParkingSystemTest {
     @Test
     public void whenGivenParkingVehicle_shouldReturnSlotNumber() {
         boolean carParkStatus = parkingLot.getVehicleParked(parkedVehicle);
-        boolean carParkStatus1 = parkingLot.getVehicleParked(new ParkingVehicle(ParkingVehicle.VehicleSize.SMALL));
-        boolean carParkStatus2 = parkingLot.getVehicleParked(new ParkingVehicle(ParkingVehicle.VehicleSize.SMALL));
+        boolean carParkStatus1 = parkingLot.getVehicleParked(new ParkingVehicle(DriverType.NORMAL_VEHICLE_DRIVER));
+        boolean carParkStatus2 = parkingLot.getVehicleParked(new ParkingVehicle(DriverType.NORMAL_VEHICLE_DRIVER));
         Integer slotNumber = parkingLot.findVehicle(parkedVehicle);
         Assert.assertEquals("1", "" + slotNumber);
     }
@@ -118,9 +119,9 @@ public class ParkingSystemTest {
     @Test
     public void whenVehicleArrives_shouldParkInLotEvenly() {
         boolean carParkStatus = parkingLot.getVehicleParked(parkedVehicle);
-        ParkingVehicle parkedVehicle1 = new ParkingVehicle(ParkingVehicle.VehicleSize.SMALL);
+        ParkingVehicle parkedVehicle1 = new ParkingVehicle(DriverType.NORMAL_VEHICLE_DRIVER);
         boolean carParkStatus1 = parkingLot.getVehicleParked(parkedVehicle1);
-        ParkingVehicle parkedVehicle2 = new ParkingVehicle(ParkingVehicle.VehicleSize.SMALL);
+        ParkingVehicle parkedVehicle2 = new ParkingVehicle(DriverType.NORMAL_VEHICLE_DRIVER);
         boolean carParkStatus2 = parkingLot.getVehicleParked(parkedVehicle2);
         Assert.assertEquals("1",""+parkingLot.findVehicle(parkedVehicle));
         Assert.assertEquals("3",""+parkingLot.findVehicle(parkedVehicle1));
@@ -130,17 +131,16 @@ public class ParkingSystemTest {
     @Test
     public void givenHandicapDriver_whenVehicleToBeParked_thenParkToNearestSlot() {
         boolean carParkStatus = parkingLot.getVehicleParked(parkedVehicle);
-        ParkingVehicle parkedVehicle1 = new ParkingVehicle(ParkingVehicle.VehicleSize.SMALL);
+        ParkingVehicle parkedVehicle1 = new ParkingVehicle(DriverType.NORMAL_VEHICLE_DRIVER);
         boolean carParkStatus1 = parkingLot.getVehicleParked(parkedVehicle1);
-        ParkingVehicle parkedVehicle2 = new ParkingVehicle(ParkingVehicle.VehicleSize.SMALL);
-        parkedVehicle2.isHandicap = true;
+        ParkingVehicle parkedVehicle2 = new ParkingVehicle(DriverType.NORMAL_VEHICLE_DRIVER);
         boolean carParkStatus2 = parkingLot.getVehicleParked(parkedVehicle2);
         Assert.assertEquals("2",""+parkingLot.findVehicle(parkedVehicle2));
     }
 
     @Test
     public void givenLargeVehicle_whenVehicleToBeParked_thenParkVehicle() {
-        ParkingVehicle parkingVehicle1 = new ParkingVehicle(ParkingVehicle.VehicleSize.LARGE);
+        ParkingVehicle parkingVehicle1 = new ParkingVehicle(DriverType.LARGE_VEHICLE_DRIVER);
         boolean vehicleParked = parkingLot.getVehicleParked(parkingVehicle1);
         Assert.assertTrue(vehicleParked);
     }
@@ -148,9 +148,9 @@ public class ParkingSystemTest {
     @Test
     public void givenMultipleVehicle_whenOneLargeVehicle_thenParkVehicle() {
         boolean vehicleParked = parkingLot.getVehicleParked(parkedVehicle);
-        ParkingVehicle parkingVehicle1 = new ParkingVehicle(ParkingVehicle.VehicleSize.LARGE);
+        ParkingVehicle parkingVehicle1 = new ParkingVehicle(DriverType.LARGE_VEHICLE_DRIVER);
         boolean vehicleParked1 = parkingLot.getVehicleParked(parkingVehicle1);
-        ParkingVehicle parkingVehicle2 = new ParkingVehicle(ParkingVehicle.VehicleSize.SMALL);
+        ParkingVehicle parkingVehicle2 = new ParkingVehicle(DriverType.NORMAL_VEHICLE_DRIVER);
         boolean vehicleParked2 = parkingLot.getVehicleParked(parkingVehicle2);
         Assert.assertTrue(vehicleParked1);
     }
@@ -158,9 +158,9 @@ public class ParkingSystemTest {
     @Test
     public void givenMultipleVehicle_whenAskedWhiteCarLocation_thenReturnWhiteCar() {
         boolean vehicleParked = parkingLot.getVehicleParked(parkedVehicle);
-        ParkingVehicle parkingVehicle1 = new ParkingVehicle(ParkingVehicle.VehicleSize.LARGE);
+        ParkingVehicle parkingVehicle1 = new ParkingVehicle(DriverType.LARGE_VEHICLE_DRIVER);
         boolean vehicleParked1 = parkingLot.getVehicleParked(parkingVehicle1);
-        ParkingVehicle parkingVehicle2 = new ParkingVehicle(ParkingVehicle.VehicleSize.SMALL);
+        ParkingVehicle parkingVehicle2 = new ParkingVehicle(DriverType.NORMAL_VEHICLE_DRIVER);
         parkingVehicle2.carColour="White";
         boolean vehicleParked2 = parkingLot.getVehicleParked(parkingVehicle2);
         Map<Integer, ParkingVehicle> foundResult = parkingLot.findVehicleByAttribute("White");
@@ -170,9 +170,9 @@ public class ParkingSystemTest {
     @Test
     public void givenMultipleVehicle_whenAskedMultipleAttributesForLocation_thenReturnSearchResult() {
         boolean vehicleParked = parkingLot.getVehicleParked(parkedVehicle);
-        ParkingVehicle parkingVehicle1 = new ParkingVehicle(ParkingVehicle.VehicleSize.LARGE);
+        ParkingVehicle parkingVehicle1 = new ParkingVehicle(DriverType.NORMAL_VEHICLE_DRIVER);
         boolean vehicleParked1 = parkingLot.getVehicleParked(parkingVehicle1);
-        ParkingVehicle parkingVehicle2 = new ParkingVehicle(ParkingVehicle.VehicleSize.SMALL);
+        ParkingVehicle parkingVehicle2 = new ParkingVehicle(DriverType.NORMAL_VEHICLE_DRIVER);
        parkingVehicle2.carColour="Blue";
         parkingVehicle2.modelName="Toyota";
         boolean vehicleParked2 = parkingLot.getVehicleParked(parkingVehicle2);

@@ -6,7 +6,7 @@ import java.util.List;
 public class ParkingLotStatusNotifier {
     List<ParkingLotObservers> parkingLotObserver = new ArrayList<>();
 
-    public void addObserver(ParkingLotObservers parkingLotObserver){
+    public void addObserver(ParkingLotObservers parkingLotObserver) {
         this.parkingLotObserver.add(parkingLotObserver);
     }
 

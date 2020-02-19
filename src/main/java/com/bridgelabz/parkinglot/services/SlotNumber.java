@@ -1,5 +1,7 @@
 package com.bridgelabz.parkinglot.services;
 
+import com.bridgelabz.parkinglot.enumerate.DriverType;
+
 import java.util.Map;
 
 public class SlotNumber {
@@ -14,13 +16,13 @@ public class SlotNumber {
         this.totalSize = totalSize;
     }
 
-    public Integer getSlotNumber(boolean isHandicap) {
-        if (isHandicap == true)
+    public Integer getSlotNumber(DriverType driverType) {
+        if (driverType == DriverType.HANDICAP_DRIVER)
             return getHandicapSlotNumber();
-        return getNonHandicapSlotNumber(isHandicap);
+        return getNonHandicapSlotNumber();
     }
 
-    private Integer getNonHandicapSlotNumber(boolean isHandicap) {
+    private Integer getNonHandicapSlotNumber() {
         int n = 0;
         if (count == noOfLots) {
             count = 0;
@@ -30,7 +32,7 @@ public class SlotNumber {
             n = i + lotStartPoint % this.totalSize;
         else if (parkedCars.containsKey((i + lotStartPoint) % this.totalSize) == true) {
             lotStartPoint += this.totalSize / noOfLots;
-            n = getSlotNumber(isHandicap);
+            n = getNonHandicapSlotNumber();
         }
         lotStartPoint += this.totalSize / noOfLots;
         count++;

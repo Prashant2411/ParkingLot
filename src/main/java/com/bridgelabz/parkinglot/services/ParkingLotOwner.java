@@ -15,6 +15,6 @@ public class ParkingLotOwner implements ParkingLotObservers {
 
     @Override
     public void setParkingLotStatus(boolean parkingLotStatus) {
-        this.isParkingLotFull=parkingLotStatus;
+        this.isParkingLotFull = parkingLotStatus;
     }
 }
