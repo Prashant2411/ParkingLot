@@ -166,7 +166,7 @@ public class ParkingSystemTest {
         parkingVehicle2.carColour="White";
         boolean vehicleParked2 = parkingLot.getVehicleParked(parkingVehicle2);
         Map<Integer, ParkingVehicle> foundResult = parkingLot.findVehicleByAttribute("White");
-        Assert.assertEquals("White",foundResult.get(2).carColour);
+        Assert.assertEquals(1,foundResult.size());
     }
 
     @Test
@@ -179,8 +179,20 @@ public class ParkingSystemTest {
         parkingVehicle2.modelName="Toyota";
         boolean vehicleParked2 = parkingLot.getVehicleParked(parkingVehicle2);
         Map<Integer, ParkingVehicle> foundResult = parkingLot.findVehicleByAttribute("Blue", "Toyota");
-        Assert.assertEquals("Blue",foundResult.get(2).carColour);
-        Assert.assertEquals("Toyota",foundResult.get(2).modelName);
+        Assert.assertEquals(1,foundResult.size());
+    }
+
+    @Test
+    public void givenMultipleAttribute_whenGivenWrongAttributesForLocation_thenReturnNoData() {
+        boolean vehicleParked = parkingLot.getVehicleParked(parkedVehicle);
+        ParkingVehicle parkingVehicle1 = new ParkingVehicle(DriverType.NORMAL_VEHICLE_DRIVER);
+        boolean vehicleParked1 = parkingLot.getVehicleParked(parkingVehicle1);
+        ParkingVehicle parkingVehicle2 = new ParkingVehicle(DriverType.NORMAL_VEHICLE_DRIVER);
+        parkingVehicle2.carColour="Blue";
+        parkingVehicle2.modelName="Toyota";
+        boolean vehicleParked2 = parkingLot.getVehicleParked(parkingVehicle2);
+        Map<Integer, ParkingVehicle> foundResult = parkingLot.findVehicleByAttribute("Mercedes");
+        Assert.assertEquals(0,foundResult.size());
     }
 
     @Test
@@ -192,7 +204,7 @@ public class ParkingSystemTest {
         parkingVehicle2.modelName="BMW";
         boolean vehicleParked2 = parkingLot.getVehicleParked(parkingVehicle2);
         Map<Integer, ParkingVehicle> foundResult = parkingLot.findVehicleByAttribute("BMW");
-        Assert.assertEquals("BMW",foundResult.get(2).modelName);
+        Assert.assertEquals(1,foundResult.size());
     }
 
     @Test
@@ -205,8 +217,20 @@ public class ParkingSystemTest {
         parkingVehicle2.localDateTime= LocalDateTime.now().minusMinutes(45);
         boolean vehicleParked2 = parkingLot.getVehicleParked(parkingVehicle2);
         Map<Integer, ParkingVehicle> foundResult = parkingLot.findVehicleByTime(30);
-        Assert.assertEquals(parkedVehicle,foundResult.get(1));
-        Assert.assertEquals(parkingVehicle1,foundResult.get(3));
-        Assert.assertFalse(foundResult.containsKey(2));
+        Assert.assertEquals(2,foundResult.size());
+    }
+
+    @Test
+    public void givenVehicleInParkingLot_whenNoVehicleParkedInLast30Minutes_thenReturnNoData() {
+        parkedVehicle.localDateTime= LocalDateTime.now().minusMinutes(31);
+        boolean vehicleParked = parkingLot.getVehicleParked(parkedVehicle);
+        ParkingVehicle parkingVehicle1 = new ParkingVehicle(DriverType.NORMAL_VEHICLE_DRIVER);
+        boolean vehicleParked1 = parkingLot.getVehicleParked(parkingVehicle1);
+        parkingVehicle1.localDateTime= LocalDateTime.now().minusMinutes(50);
+        ParkingVehicle parkingVehicle2 = new ParkingVehicle(DriverType.NORMAL_VEHICLE_DRIVER);
+        parkingVehicle2.localDateTime= LocalDateTime.now().minusMinutes(45);
+        boolean vehicleParked2 = parkingLot.getVehicleParked(parkingVehicle2);
+        Map<Integer, ParkingVehicle> foundResult = parkingLot.findVehicleByTime(30);
+        Assert.assertEquals(0,foundResult.size());
     }
 }
