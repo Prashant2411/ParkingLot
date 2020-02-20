@@ -181,4 +181,17 @@ public class ParkingSystemTest {
         Assert.assertEquals("Blue",foundResult.get(2).carColour);
         Assert.assertEquals("Toyota",foundResult.get(2).modelName);
     }
+
+    @Test
+    public void givenVehicle_whenVehicleIsBMW_thenReturnSearchResult() {
+        boolean vehicleParked = parkingLot.getVehicleParked(parkedVehicle);
+        ParkingVehicle parkingVehicle1 = new ParkingVehicle(DriverType.NORMAL_VEHICLE_DRIVER);
+        boolean vehicleParked1 = parkingLot.getVehicleParked(parkingVehicle1);
+        ParkingVehicle parkingVehicle2 = new ParkingVehicle(DriverType.NORMAL_VEHICLE_DRIVER);
+        parkingVehicle2.modelName="BMW";
+        boolean vehicleParked2 = parkingLot.getVehicleParked(parkingVehicle2);
+        Map<Integer, ParkingVehicle> foundResult = parkingLot.findVehicleByAttribute("BMW");
+        System.out.println(foundResult);
+        Assert.assertEquals("BMW",foundResult.get(2).modelName);
+    }
 }
