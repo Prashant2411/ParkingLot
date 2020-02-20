@@ -4,11 +4,11 @@ import java.util.Map;
 
 public class SlotNumber {
 
-    private Map<Integer, ParkingVehicle> parkedCars;
+    private Map<Integer, VehicleParkingDetails> parkedCars;
     public Integer noOfLots, lotStartPoint = 0, totalSize;
     private int count = 0, i = 1;
 
-    public SlotNumber(Map<Integer, ParkingVehicle> parkedCars, Integer noOfLots, Integer totalSize) {
+    public SlotNumber(Map<Integer, VehicleParkingDetails> parkedCars, Integer noOfLots, Integer totalSize) {
         this.noOfLots = noOfLots;
         this.totalSize = totalSize;
         this.parkedCars = parkedCars;

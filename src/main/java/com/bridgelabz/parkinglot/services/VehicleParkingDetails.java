@@ -4,14 +4,15 @@ import com.bridgelabz.parkinglot.enumerate.DriverType;
 
 import java.time.LocalDateTime;
 
-public class ParkingVehicle {
+public class VehicleParkingDetails {
 
     public LocalDateTime localDateTime;
     public DriverType driverType;
     public String carColour = null;
     public String plateNumber, parkingAttendentName, modelName;
+    public Integer lotNumber;
 
-    public ParkingVehicle(DriverType driverType) {
+    public VehicleParkingDetails(DriverType driverType) {
         LocalDateTime formatDateTime = LocalDateTime.now();
         this.localDateTime = formatDateTime;
         this.driverType = driverType;
@@ -23,13 +24,14 @@ public class ParkingVehicle {
 
     @Override
     public String toString() {
-        return "ParkingVehicle{" +
-                "localDateTime='" + localDateTime + '\'' +
+        return "VehicleParkingDetails{" +
+                "localDateTime=" + localDateTime +
                 ", driverType=" + driverType +
                 ", carColour='" + carColour + '\'' +
                 ", plateNumber='" + plateNumber + '\'' +
                 ", parkingAttendentName='" + parkingAttendentName + '\'' +
                 ", modelName='" + modelName + '\'' +
+                ", lotNumber=" + lotNumber +
                 '}';
     }
 }
