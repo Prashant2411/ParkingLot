@@ -60,7 +60,7 @@ public class ParkingSystem {
 
     private boolean getFilter(Map.Entry<Integer, ParkingVehicle> values, String... attribute) {
         for (String attribute1 : attribute) {
-            if (!(parkedCars.get(values.getKey()).toString().contains(attribute1)))
+            if (!(parkedCars.get(values.getKey()).toString().toLowerCase().contains(attribute1.toLowerCase())))
                 return false;
         }
         return true;
@@ -69,7 +69,7 @@ public class ParkingSystem {
     public Map<Integer, ParkingVehicle> findByTime(int timeInMinute) {
         return parkedCars.entrySet()
                 .stream()
-                .filter(values -> LocalDateTime.now().minusMinutes(timeInMinute).compareTo(parkedCars.get(values.getKey()).localDateTime) < 0 ? true : false)
+                .filter(values -> LocalDateTime.now().minusMinutes(timeInMinute).compareTo(parkedCars.get(values.getKey()).localDateTime) < 0)
                 .collect(Collectors.toMap(Map.Entry::getKey, Map.Entry::getValue));
     }
 }
