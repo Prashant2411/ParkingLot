@@ -2,6 +2,7 @@ package com.bridgelabz.parkinglot.services;
 
 import com.bridgelabz.parkinglot.exception.ParkingLotException;
 
+import java.time.LocalDateTime;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.stream.Collectors;
@@ -41,7 +42,7 @@ public class ParkingSystem {
         return null;
     }
 
-    public String getParkingTime(ParkingVehicle parkedVehicle) {
+    public LocalDateTime getParkingTime(ParkingVehicle parkedVehicle) {
         Integer carSlotNumber = isCarParked(parkedVehicle);
         if (carSlotNumber != null) {
             return parkedCars.get(carSlotNumber)
@@ -50,7 +51,7 @@ public class ParkingSystem {
         throw new ParkingLotException("Enter valid Car details", ParkingLotException.ExceptionType.NO_SUCH_VEHICLE_NUMBER);
     }
 
-    public Map<Integer, ParkingVehicle> findVehicle(String... attribute) {
+    public Map<Integer, ParkingVehicle> findByAttribute(String... attribute) {
         return parkedCars.entrySet()
                 .stream()
                 .filter(values -> getFilter(values, attribute))
@@ -63,5 +64,12 @@ public class ParkingSystem {
                 return false;
         }
         return true;
+    }
+
+    public Map<Integer, ParkingVehicle> findByTime(int timeInMinute) {
+        return parkedCars.entrySet()
+                .stream()
+                .filter(values -> LocalDateTime.now().minusMinutes(timeInMinute).compareTo(parkedCars.get(values.getKey()).localDateTime) < 0 ? true : false)
+                .collect(Collectors.toMap(Map.Entry::getKey, Map.Entry::getValue));
     }
 }

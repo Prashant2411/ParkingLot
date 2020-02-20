@@ -5,6 +5,7 @@ import com.bridgelabz.parkinglot.services.ParkingLotStatus;
 import com.bridgelabz.parkinglot.services.ParkingSystem;
 import com.bridgelabz.parkinglot.services.ParkingVehicle;
 
+import java.time.LocalDateTime;
 import java.util.Map;
 
 public class ParkingLot {
@@ -38,11 +39,15 @@ public class ParkingLot {
     }
 
     private void getParkedTime(ParkingVehicle unparkedVehicle) {
-        String parkingTime = parkingSystem.getParkingTime(unparkedVehicle);
+        LocalDateTime parkingTime = parkingSystem.getParkingTime(unparkedVehicle);
         new ParkingLotOwner().setVehicleParkingTime(parkingTime);
     }
 
     public Map<Integer, ParkingVehicle> findVehicleByAttribute(String... attribute) {
-        return parkingSystem.findVehicle(attribute);
+        return parkingSystem.findByAttribute(attribute);
+    }
+
+    public Map<Integer, ParkingVehicle> findVehicleByTime(int timeInMinutes) {
+        return parkingSystem.findByTime(timeInMinutes);
     }
 }

@@ -8,6 +8,7 @@ import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
+import java.time.LocalDateTime;
 import java.util.Map;
 
 public class ParkingSystemTest {
@@ -191,7 +192,21 @@ public class ParkingSystemTest {
         parkingVehicle2.modelName="BMW";
         boolean vehicleParked2 = parkingLot.getVehicleParked(parkingVehicle2);
         Map<Integer, ParkingVehicle> foundResult = parkingLot.findVehicleByAttribute("BMW");
-        System.out.println(foundResult);
         Assert.assertEquals("BMW",foundResult.get(2).modelName);
+    }
+
+    @Test
+    public void givenVehicleInParkingLot_whenParkedInLast30Minutes_thenReturnSearchResult() {
+        boolean vehicleParked = parkingLot.getVehicleParked(parkedVehicle);
+        ParkingVehicle parkingVehicle1 = new ParkingVehicle(DriverType.NORMAL_VEHICLE_DRIVER);
+        boolean vehicleParked1 = parkingLot.getVehicleParked(parkingVehicle1);
+        parkingVehicle1.localDateTime= LocalDateTime.now().minusMinutes(15);
+        ParkingVehicle parkingVehicle2 = new ParkingVehicle(DriverType.NORMAL_VEHICLE_DRIVER);
+        parkingVehicle2.localDateTime= LocalDateTime.now().minusMinutes(45);
+        boolean vehicleParked2 = parkingLot.getVehicleParked(parkingVehicle2);
+        Map<Integer, ParkingVehicle> foundResult = parkingLot.findVehicleByTime(30);
+        Assert.assertEquals(parkedVehicle,foundResult.get(1));
+        Assert.assertEquals(parkingVehicle1,foundResult.get(3));
+        Assert.assertFalse(foundResult.containsKey(2));
     }
 }

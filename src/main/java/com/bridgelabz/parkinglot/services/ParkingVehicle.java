@@ -3,23 +3,21 @@ package com.bridgelabz.parkinglot.services;
 import com.bridgelabz.parkinglot.enumerate.DriverType;
 
 import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
 
 public class ParkingVehicle {
 
-    private String localDateTime;
+    public LocalDateTime localDateTime;
     DriverType driverType;
     public String carColour = null;
     public String plateNumber, parkingAttendentName, modelName;
 
     public ParkingVehicle(DriverType driverType) {
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
-        String formatDateTime = LocalDateTime.now().format(formatter);
+        LocalDateTime formatDateTime = LocalDateTime.now();
         this.localDateTime = formatDateTime;
         this.driverType = driverType;
     }
 
-    public String getLocalDateTime() {
+    public LocalDateTime getLocalDateTime() {
         return this.localDateTime;
     }
 

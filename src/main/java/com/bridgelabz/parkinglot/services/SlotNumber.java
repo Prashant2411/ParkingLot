@@ -20,7 +20,7 @@ public class SlotNumber {
         count++;
         if (!(parkedCars.containsKey((i + lotStartPoint) % this.totalSize))) {
             n = checkPreviousSlots();
-            if ( n == 0)
+            if (n == 0)
                 n = i + lotStartPoint % this.totalSize;
         }
         lotStartPoint += this.totalSize / noOfLots;
@@ -60,9 +60,9 @@ public class SlotNumber {
         this.getCounterReinitialized();
         count++;
         if (!(parkedCars.containsKey((i + lotStartPoint) % this.totalSize))
-                && !(parkedCars.containsKey(((i + lotStartPoint) % this.totalSize)+1))) {
+                && !(parkedCars.containsKey(((i + lotStartPoint) % this.totalSize) + 1))) {
             n = checkPreviousSlots();
-            if ( n == 0)
+            if (n == 0)
                 n = i + lotStartPoint % this.totalSize;
         }
         lotStartPoint += this.totalSize / noOfLots;

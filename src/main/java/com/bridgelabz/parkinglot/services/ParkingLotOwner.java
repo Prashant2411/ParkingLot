@@ -1,15 +1,19 @@
 package com.bridgelabz.parkinglot.services;
 
+import jdk.vm.ci.meta.Local;
+
+import java.time.LocalDateTime;
+
 public class ParkingLotOwner implements ParkingLotObservers {
 
     public static boolean isParkingLotFull;
-    public static String vehicleParkingTime;
+    public static LocalDateTime vehicleParkingTime;
 
-    public String getVehicleParkingTime() {
+    public LocalDateTime getVehicleParkingTime() {
         return vehicleParkingTime;
     }
 
-    public void setVehicleParkingTime(String vehicleParkingTime) {
+    public void setVehicleParkingTime(LocalDateTime vehicleParkingTime) {
         this.vehicleParkingTime = vehicleParkingTime;
     }
 
