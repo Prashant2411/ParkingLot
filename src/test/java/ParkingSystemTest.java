@@ -253,4 +253,24 @@ public class ParkingSystemTest {
         Map<Integer, VehicleParkingDetails> foundResult = parkingLot.findVehiclesOfLot("HANDICAP_VEHICLE_DRIVER",2,4);
         Assert.assertEquals(3,foundResult.size());
     }
+
+    @Test
+    public void givenVehicleInParkingLot_whenNeedAllData_thenReturnSearchResult() {
+        parkingLot = new ParkingLot(8, 4);
+        boolean vehicleParked = parkingLot.getVehicleParked(parkedVehicle);
+        VehicleParkingDetails parkingVehicle1 = new VehicleParkingDetails(DriverType.HANDICAP_VEHICLE_DRIVER);
+        boolean vehicleParked1 = parkingLot.getVehicleParked(parkingVehicle1);
+        VehicleParkingDetails parkingVehicle2 = new VehicleParkingDetails(DriverType.HANDICAP_VEHICLE_DRIVER);
+        boolean vehicleParked2 = parkingLot.getVehicleParked(parkingVehicle2);
+        VehicleParkingDetails parkingVehicle3 = new VehicleParkingDetails(DriverType.SMALL_VEHICLE_DRIVER);
+        boolean vehicleParked3 = parkingLot.getVehicleParked(parkingVehicle3);
+        VehicleParkingDetails parkingVehicle4 = new VehicleParkingDetails(DriverType.HANDICAP_VEHICLE_DRIVER);
+        boolean vehicleParked4 = parkingLot.getVehicleParked(parkingVehicle4);
+        VehicleParkingDetails parkingVehicle5 = new VehicleParkingDetails(DriverType.HANDICAP_VEHICLE_DRIVER);
+        boolean vehicleParked5 = parkingLot.getVehicleParked(parkingVehicle5);
+        VehicleParkingDetails parkingVehicle6 = new VehicleParkingDetails(DriverType.HANDICAP_VEHICLE_DRIVER);
+        boolean vehicleParked6 = parkingLot.getVehicleParked(parkingVehicle6);
+        Map<Integer, VehicleParkingDetails> foundResult = parkingLot.findVehicleByAttribute("");
+        Assert.assertEquals(7,foundResult.size());
+    }
 }
