@@ -20,7 +20,7 @@ public class ParkingSystem {
     public boolean getVehicleParked(ParkingVehicle parkedCar) {
         SlotNumber slotNumber = new SlotNumber(parkedCars, noOfLots, totalSize);
         if (!(this.parkedCars.size() < this.totalSize && this.parkedCars.containsValue(parkedCar))) {
-            this.parkedCars.put(parkedCar.vehicleType.getSlotNumber(slotNumber), parkedCar);
+            this.parkedCars.put(parkedCar.driverType.getSlotNumber(slotNumber), parkedCar);
         } else if (this.parkedCars.containsValue(parkedCar))
             throw new ParkingLotException("Vehicle Already Parked", ParkingLotException.ExceptionType.VEHICLE_ALREADY_PARKED);
         return true;

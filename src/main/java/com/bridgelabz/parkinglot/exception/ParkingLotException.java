@@ -3,7 +3,7 @@ package com.bridgelabz.parkinglot.exception;
 public class ParkingLotException extends RuntimeException {
 
     public enum ExceptionType {
-        NO_SUCH_VEHICLE_NUMBER, VEHICLE_ALREADY_PARKED
+        NO_SUCH_VEHICLE_NUMBER, VEHICLE_ALREADY_PARKED, DETAILS_NOT_FOUND
     }
 
     public ExceptionType type;
