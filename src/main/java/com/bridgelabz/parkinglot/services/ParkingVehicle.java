@@ -1,20 +1,20 @@
 package com.bridgelabz.parkinglot.services;
 
-import com.bridgelabz.parkinglot.enumerate.DriverType;
+import com.bridgelabz.parkinglot.enumerate.VehicleType;
 
 import java.time.LocalDateTime;
 
 public class ParkingVehicle {
 
     public LocalDateTime localDateTime;
-    DriverType driverType;
+    VehicleType vehicleType;
     public String carColour = null;
     public String plateNumber, parkingAttendentName, modelName;
 
-    public ParkingVehicle(DriverType driverType) {
+    public ParkingVehicle(VehicleType vehicleType) {
         LocalDateTime formatDateTime = LocalDateTime.now();
         this.localDateTime = formatDateTime;
-        this.driverType = driverType;
+        this.vehicleType = vehicleType;
     }
 
     public LocalDateTime getLocalDateTime() {
@@ -25,7 +25,7 @@ public class ParkingVehicle {
     public String toString() {
         return "ParkingVehicle{" +
                 "localDateTime='" + localDateTime + '\'' +
-                ", driverType=" + driverType +
+                ", driverType=" + vehicleType +
                 ", carColour='" + carColour + '\'' +
                 ", plateNumber='" + plateNumber + '\'' +
                 ", parkingAttendentName='" + parkingAttendentName + '\'' +

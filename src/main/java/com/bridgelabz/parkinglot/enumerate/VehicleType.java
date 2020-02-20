@@ -2,18 +2,18 @@ package com.bridgelabz.parkinglot.enumerate;
 
 import com.bridgelabz.parkinglot.services.SlotNumber;
 
-public enum DriverType {
-    HANDICAP_DRIVER {
+public enum VehicleType {
+    ADAPTED_VEHICLE {
         @Override
         public Integer getSlotNumber(SlotNumber slotNumber) {
             return slotNumber.getHandicapSlotNumber();
         }
-    }, LARGE_VEHICLE_DRIVER {
+    }, LARGE_VEHICLE {
         @Override
         public Integer getSlotNumber(SlotNumber slotNumber) {
             return slotNumber.getLargeVehicleSlotNumber();
         }
-    }, NORMAL_VEHICLE_DRIVER {
+    }, SMALL_VEHICLE {
         @Override
         public Integer getSlotNumber(SlotNumber slotNumber) {
             return slotNumber.getNonHandicapSlotNumber();
