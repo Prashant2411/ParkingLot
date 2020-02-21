@@ -91,13 +91,12 @@ public class ParkingSystem {
         parkedCars.entrySet()
                 .stream()
                 .filter(values -> values.getValue() == parkedCar)
-                .map(values -> {
+                .forEach(values -> {
                     for (int j = 1; j <= noOfLots; j++)
                         if (values.getKey() <= j * (totalSize / noOfLots)) {
                             parkedCar.lotNumber = j;
                             break;
                         }
-                    return null;
-                }).count();
+                });
     }
 }
