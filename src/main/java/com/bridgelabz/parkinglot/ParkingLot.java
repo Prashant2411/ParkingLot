@@ -1,5 +1,6 @@
 package com.bridgelabz.parkinglot;
 
+import com.bridgelabz.parkinglot.enumerate.SearchKeywords;
 import com.bridgelabz.parkinglot.services.ParkingLotOwner;
 import com.bridgelabz.parkinglot.services.ParkingLotStatus;
 import com.bridgelabz.parkinglot.services.ParkingSystem;
@@ -43,7 +44,7 @@ public class ParkingLot {
         new ParkingLotOwner().setVehicleParkingTime(parkingTime);
     }
 
-    public Map<Integer, VehicleParkingDetails> findVehicleByAttribute(String... attribute) {
+    public Map<Integer, VehicleParkingDetails> findVehicleByAttribute(SearchKeywords... attribute) {
         return parkingSystem.findByAttribute(attribute);
     }
 
@@ -51,7 +52,7 @@ public class ParkingLot {
         return parkingSystem.findByTime(timeInMinutes);
     }
 
-    public Map<Integer, VehicleParkingDetails> findVehiclesOfLot(String attribute, Integer... lotNumber) {
+    public Map<Integer, VehicleParkingDetails> findVehiclesOfLot(SearchKeywords attribute, Integer... lotNumber) {
         return parkingSystem.findVehiclesOfLot(attribute, lotNumber);
     }
 }

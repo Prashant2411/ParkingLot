@@ -1,4 +1,5 @@
 import com.bridgelabz.parkinglot.enumerate.DriverType;
+import com.bridgelabz.parkinglot.enumerate.SearchKeywords;
 import com.bridgelabz.parkinglot.exception.ParkingLotException;
 import com.bridgelabz.parkinglot.services.AirportSecuritySystem;
 import com.bridgelabz.parkinglot.services.ParkingLotOwner;
@@ -165,7 +166,7 @@ public class ParkingSystemTest {
         VehicleParkingDetails parkingVehicle2 = new VehicleParkingDetails(DriverType.SMALL_VEHICLE_DRIVER);
         parkingVehicle2.carColour="White";
         boolean vehicleParked2 = parkingLot.getVehicleParked(parkingVehicle2);
-        Map<Integer, VehicleParkingDetails> foundResult = parkingLot.findVehicleByAttribute("White");
+        Map<Integer, VehicleParkingDetails> foundResult = parkingLot.findVehicleByAttribute(SearchKeywords.WHITE);
         Assert.assertEquals(1,foundResult.size());
     }
 
@@ -178,7 +179,7 @@ public class ParkingSystemTest {
         parkingVehicle2.carColour="Blue";
         parkingVehicle2.modelName="Toyota";
         boolean vehicleParked2 = parkingLot.getVehicleParked(parkingVehicle2);
-        Map<Integer, VehicleParkingDetails> foundResult = parkingLot.findVehicleByAttribute("Blue", "Toyota");
+        Map<Integer, VehicleParkingDetails> foundResult = parkingLot.findVehicleByAttribute(SearchKeywords.BLUE, SearchKeywords.TOYOTA);
         Assert.assertEquals(1,foundResult.size());
     }
 
@@ -191,7 +192,7 @@ public class ParkingSystemTest {
         parkingVehicle2.carColour="Blue";
         parkingVehicle2.modelName="Toyota";
         boolean vehicleParked2 = parkingLot.getVehicleParked(parkingVehicle2);
-        Map<Integer, VehicleParkingDetails> foundResult = parkingLot.findVehicleByAttribute("Mercedes");
+        Map<Integer, VehicleParkingDetails> foundResult = parkingLot.findVehicleByAttribute(SearchKeywords.MERCEDES);
         Assert.assertEquals(0,foundResult.size());
     }
 
@@ -203,7 +204,7 @@ public class ParkingSystemTest {
         VehicleParkingDetails parkingVehicle2 = new VehicleParkingDetails(DriverType.SMALL_VEHICLE_DRIVER);
         parkingVehicle2.modelName="BMW";
         boolean vehicleParked2 = parkingLot.getVehicleParked(parkingVehicle2);
-        Map<Integer, VehicleParkingDetails> foundResult = parkingLot.findVehicleByAttribute("BMW");
+        Map<Integer, VehicleParkingDetails> foundResult = parkingLot.findVehicleByAttribute(SearchKeywords.BMW);
         Assert.assertEquals(1,foundResult.size());
     }
 
@@ -250,7 +251,7 @@ public class ParkingSystemTest {
         boolean vehicleParked5 = parkingLot.getVehicleParked(parkingVehicle5);
         VehicleParkingDetails parkingVehicle6 = new VehicleParkingDetails(DriverType.HANDICAP_VEHICLE_DRIVER);
         boolean vehicleParked6 = parkingLot.getVehicleParked(parkingVehicle6);
-        Map<Integer, VehicleParkingDetails> foundResult = parkingLot.findVehiclesOfLot("HANDICAP_VEHICLE_DRIVER",2,4);
+        Map<Integer, VehicleParkingDetails> foundResult = parkingLot.findVehiclesOfLot(SearchKeywords.HANDICAP_VEHICLE_DRIVER,2,4);
         Assert.assertEquals(3,foundResult.size());
     }
 
@@ -270,7 +271,7 @@ public class ParkingSystemTest {
         boolean vehicleParked5 = parkingLot.getVehicleParked(parkingVehicle5);
         VehicleParkingDetails parkingVehicle6 = new VehicleParkingDetails(DriverType.HANDICAP_VEHICLE_DRIVER);
         boolean vehicleParked6 = parkingLot.getVehicleParked(parkingVehicle6);
-        Map<Integer, VehicleParkingDetails> foundResult = parkingLot.findVehicleByAttribute("");
+        Map<Integer, VehicleParkingDetails> foundResult = parkingLot.findVehicleByAttribute();
         Assert.assertEquals(7,foundResult.size());
     }
 }

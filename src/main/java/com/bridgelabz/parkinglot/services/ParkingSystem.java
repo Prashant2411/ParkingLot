@@ -1,5 +1,6 @@
 package com.bridgelabz.parkinglot.services;
 
+import com.bridgelabz.parkinglot.enumerate.SearchKeywords;
 import com.bridgelabz.parkinglot.exception.ParkingLotException;
 
 import java.time.LocalDateTime;
@@ -52,16 +53,16 @@ public class ParkingSystem {
         throw new ParkingLotException("Enter valid Car details", ParkingLotException.ExceptionType.NO_SUCH_VEHICLE_NUMBER);
     }
 
-    public Map<Integer, VehicleParkingDetails> findByAttribute(String... attribute) {
+    public Map<Integer, VehicleParkingDetails> findByAttribute(SearchKeywords... attribute) {
         return parkedCars.entrySet()
                 .stream()
                 .filter(values -> getFilter(values, attribute))
                 .collect(Collectors.toMap(Map.Entry::getKey, Map.Entry::getValue));
     }
 
-    private boolean getFilter(Map.Entry<Integer, VehicleParkingDetails> values, String... attribute) {
-        for (String attribute1 : attribute) {
-            if (!(parkedCars.get(values.getKey()).toString().toLowerCase().contains(attribute1.toLowerCase())))
+    private boolean getFilter(Map.Entry<Integer, VehicleParkingDetails> values, SearchKeywords... attribute) {
+        for (SearchKeywords attribute1 : attribute) {
+            if (!(parkedCars.get(values.getKey()).toString().toUpperCase().contains(attribute1)))
                 return false;
         }
         return true;
@@ -74,7 +75,7 @@ public class ParkingSystem {
                 .collect(Collectors.toMap(Map.Entry::getKey, Map.Entry::getValue));
     }
 
-    public Map<Integer, VehicleParkingDetails> findVehiclesOfLot(String attribute, Integer... lotNumber) {
+    public Map<Integer, VehicleParkingDetails> findVehiclesOfLot(SearchKeywords attribute, Integer... lotNumber) {
         return findByAttribute(attribute).entrySet()
                 .stream()
                 .filter(values -> {
