@@ -62,7 +62,7 @@ public class ParkingSystem {
 
     private boolean getFilter(Map.Entry<Integer, VehicleParkingDetails> values, SearchKeywords... attribute) {
         for (SearchKeywords attribute1 : attribute) {
-            if (!(parkedCars.get(values.getKey()).toString().toUpperCase().contains(attribute1)))
+            if (!(parkedCars.get(values.getKey()).toString().toUpperCase().contains(attribute1.toString())))
                 return false;
         }
         return true;
