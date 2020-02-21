@@ -22,15 +22,15 @@ public class ParkingLot {
         parkingLotStatus = new ParkingLotStatus(parkingSystem.parkedCars);
     }
 
-    public boolean getVehicleParked(VehicleParkingDetails parkedVehicle) {
-        boolean parkingStatus = parkingSystem.getVehicleParked(parkedVehicle);
+    public boolean parkVehicle(VehicleParkingDetails parkedVehicle) {
+        boolean parkingStatus = parkingSystem.parkVehicle(parkedVehicle);
         parkingLotStatus.parkingLotStatus();
         return parkingStatus;
     }
 
-    public boolean getVehicleUnparked(VehicleParkingDetails unparkVehicle) {
-        this.getParkedTime(unparkVehicle);
-        boolean unparkingStatus = parkingSystem.getVehicleUnparked(unparkVehicle);
+    public boolean unparkVehicle(VehicleParkingDetails unparkVehicle) {
+        this.notifyParkTimeToOwner(unparkVehicle);
+        boolean unparkingStatus = parkingSystem.unparkVehicle(unparkVehicle);
         parkingLotStatus.parkingLotStatus();
         return unparkingStatus;
     }
@@ -39,7 +39,7 @@ public class ParkingLot {
         return parkingSystem.isCarParked(parkedVehicle);
     }
 
-    private void getParkedTime(VehicleParkingDetails unparkedVehicle) {
+    private void notifyParkTimeToOwner(VehicleParkingDetails unparkedVehicle) {
         LocalDateTime parkingTime = parkingSystem.getParkingTime(unparkedVehicle);
         new ParkingLotOwner().setVehicleParkingTime(parkingTime);
     }

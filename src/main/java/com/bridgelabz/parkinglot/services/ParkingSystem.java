@@ -18,7 +18,7 @@ public class ParkingSystem {
         this.totalSize = totalSize;
     }
 
-    public boolean getVehicleParked(VehicleParkingDetails parkedCar) {
+    public boolean parkVehicle(VehicleParkingDetails parkedCar) {
         SlotNumber slotNumber = new SlotNumber(parkedCars, noOfLots, totalSize);
         if (!(this.parkedCars.size() < this.totalSize && this.parkedCars.containsValue(parkedCar))) {
             this.parkedCars.put(parkedCar.driverType.getSlotNumber(slotNumber), parkedCar);
@@ -28,7 +28,7 @@ public class ParkingSystem {
         return true;
     }
 
-    public boolean getVehicleUnparked(VehicleParkingDetails unparkVehicle) {
+    public boolean unparkVehicle(VehicleParkingDetails unparkVehicle) {
         Integer isCarParked = isCarParked(unparkVehicle);
         if (isCarParked != null) {
             parkedCars.remove(isCarParked);
