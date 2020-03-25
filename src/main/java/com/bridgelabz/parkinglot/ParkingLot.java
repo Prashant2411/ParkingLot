@@ -1,6 +1,6 @@
 package com.bridgelabz.parkinglot;
 
-import com.bridgelabz.parkinglot.enumerate.SearchKeywords;
+import com.bridgelabz.parkinglot.enumeration.SearchKeywords;
 import com.bridgelabz.parkinglot.services.ParkingLotOwner;
 import com.bridgelabz.parkinglot.services.ParkingLotStatus;
 import com.bridgelabz.parkinglot.services.ParkingSystem;

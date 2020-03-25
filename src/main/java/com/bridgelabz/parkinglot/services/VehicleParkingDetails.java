@@ -1,6 +1,6 @@
 package com.bridgelabz.parkinglot.services;
 
-import com.bridgelabz.parkinglot.enumerate.DriverType;
+import com.bridgelabz.parkinglot.enumeration.DriverType;
 
 import java.time.LocalDateTime;
 

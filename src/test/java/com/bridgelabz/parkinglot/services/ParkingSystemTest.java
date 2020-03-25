@@ -1,11 +1,9 @@
-package com.bridgelabz.parkinglot;
+package com.bridgelabz.parkinglot.services;
 
-import com.bridgelabz.parkinglot.enumerate.DriverType;
-import com.bridgelabz.parkinglot.enumerate.SearchKeywords;
+import com.bridgelabz.parkinglot.ParkingLot;
+import com.bridgelabz.parkinglot.enumeration.DriverType;
+import com.bridgelabz.parkinglot.enumeration.SearchKeywords;
 import com.bridgelabz.parkinglot.exception.ParkingLotException;
-import com.bridgelabz.parkinglot.services.AirportSecuritySystem;
-import com.bridgelabz.parkinglot.services.ParkingLotOwner;
-import com.bridgelabz.parkinglot.services.VehicleParkingDetails;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
@@ -22,7 +20,6 @@ public class ParkingSystemTest {
     public void setup() {
         parkingLot = new ParkingLot(4, 2);
         parkedVehicle = new VehicleParkingDetails(DriverType.SMALL_VEHICLE_DRIVER);
-
     }
 
     @Test

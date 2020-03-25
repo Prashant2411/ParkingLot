@@ -1,6 +1,6 @@
 package com.bridgelabz.parkinglot.services;
 
-import com.bridgelabz.parkinglot.enumerate.SearchKeywords;
+import com.bridgelabz.parkinglot.enumeration.SearchKeywords;
 import com.bridgelabz.parkinglot.exception.ParkingLotException;
 
 import java.time.LocalDateTime;

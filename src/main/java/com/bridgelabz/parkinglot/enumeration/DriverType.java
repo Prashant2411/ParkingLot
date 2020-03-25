@@ -1,4 +1,4 @@
-package com.bridgelabz.parkinglot.enumerate;
+package com.bridgelabz.parkinglot.enumeration;
 
 import com.bridgelabz.parkinglot.services.SlotNumber;
 
